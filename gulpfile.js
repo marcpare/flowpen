@@ -71,9 +71,8 @@ gulp.task('server', function () {
   }));
 });
 
-gulp.task('start', ['server'], function () {
-  
-  // TODO run gulp watch
+gulp.task('start', ['server', 'dist', 'watch'], function () {
+  console.log('Starting development environment...'); 
 });
 
 
