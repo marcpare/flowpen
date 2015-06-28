@@ -13,14 +13,16 @@ var WIDTH = canvas.width,
     ctx = canvas.getContext('2d');
 
 var mouseX = 0, mouseY = 0;
-(function(){
-var rect = canvas.getBoundingClientRect(),
-    left = rect.left,
-    top = rect.top;
-canvas.addEventListener('mousemove', function(e) {
-    mouseX = (e.clientX - left)|0,
-    mouseY = (e.clientY - top)|0;
-}); 
+(function () {
+  
+  var rect = false;
+  
+  canvas.addEventListener('mousemove', function (e) {
+    if (!rect) rect = canvas.getBoundingClientRect();
+    mouseX = (e.clientX - rect.left)|0,
+    mouseY = (e.clientY - rect.top)|0;
+  }); 
+
 })();
 
 ctx.fillRect(0, 0, WIDTH, HEIGHT);
