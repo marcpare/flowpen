@@ -22,12 +22,16 @@ Link app in node_modules
 	cd node_modules
 	ln -s ../app .
 
-Running:
+Run:
 
 	npm start
 
 TODO
 ---
+
+- NEXT: scale simulation container to window w/h
+- NEXT: migrate wall, inlet tools
+- NEXT: clean up the wagner simulation code (a new lib, speed up, too?)
 
 - gut and rewrite the container.
   - globals ok for simulation
@@ -36,6 +40,6 @@ TODO
   - ES6 everything?
   - support routes?
   - save the model state in the URL? (if possible)
-  
+
 
 - do app/ directory link in npm install
