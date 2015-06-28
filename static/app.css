@@ -43,7 +43,7 @@ a {
 #c {
   z-index: 100;
 }
-#sim-container {
+#simulation {
   z-index: 100;
   position: absolute;
   left: 230px;
