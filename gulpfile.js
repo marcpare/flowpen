@@ -20,7 +20,9 @@ gulp.task('watch', function() {
 
 gulp.task('lint', function () {
   return gulp.src('app/**/*.js')
-    .pipe(jshint())
+    .pipe(jshint({
+      esnext: true
+    }))
     .pipe(notify(function (file) {
       if (file.jshint.success) {
         return false; // Don't show something if success 
