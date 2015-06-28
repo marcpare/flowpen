@@ -1,11 +1,14 @@
 let AmpersandView = require('ampersand-view');
 let StamWagnerSimulation = require('app/lib/stam-wagner-simulation');
+let WindowWatcher = require('window-watcher');
 
 module.exports = AmpersandView.extend({
   template: require('app/components/simulation/simulation.jade'),
   
   initialize (options) {
     this.simulationOptions = options.simulationOptions;
+    
+    WindowWatcher.on('resize', this.recenter.bind(this));
   },
   
   startSimulation () {
@@ -30,9 +33,7 @@ module.exports = AmpersandView.extend({
     
     this.elCanvas.style.width = `${width}px`;
     this.elCanvas.style.height = `${height}px`;
-    
-    console.log(`${width} px`);
-    
+        
     let left = (W - width) / 2.0;
     let top = (H - height) / 2.0;
     

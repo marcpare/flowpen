@@ -36,7 +36,8 @@
     "tap-spec": "^2.2.2",
     "tape": "^3.5.0",
     "vinyl-buffer": "^1.0.0",
-    "vinyl-source-stream": "^1.0.0"
+    "vinyl-source-stream": "^1.0.0",
+    "window-watcher": "^1.0.0"
   },
   "scripts": {
     "test": "node ./test/unit/base.js",
@@ -46,4 +47,3 @@
   "author": "",
   "license": "ISC"
 }
-
