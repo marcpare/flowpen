@@ -34,6 +34,7 @@ TODO
 - NEXT: scale simulation container to window w/h
 - NEXT: migrate wall, inlet tools
 - NEXT: clean up the wagner simulation code (a new lib, speed up, too?)
+  - all and inlet bindings
 
 - gut and rewrite the container.
   - globals ok for simulation

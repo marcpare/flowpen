@@ -19,7 +19,7 @@ var mouseX = 0, mouseY = 0;
   
   canvas.addEventListener('mousemove', function (e) {
     if (!rect) rect = canvas.getBoundingClientRect();
-    mouseX = (e.clientX - rect.left)|0,
+    mouseX = (e.clientX - rect.left)|0;
     mouseY = (e.clientY - rect.top)|0;
   }); 
 
@@ -280,4 +280,4 @@ var requestAnimationFrame = (window.requestAnimationFrame       ||
 })();
 
 
-}
+};

@@ -40,9 +40,10 @@
   },
   "scripts": {
     "test": "node ./test/unit/base.js",
-    "prestart-dev": "gulp dist",
-    "start": "gulp start"
+    "start": "gulp start",
+    "open": "open -a 'Google Chrome' http://flowpen:8000"
   },
   "author": "",
   "license": "ISC"
 }
+
