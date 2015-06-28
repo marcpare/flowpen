@@ -1,0 +1,42 @@
+div.tb-container  
+  div.tb-left
+    div.testbeds-list
+      h4.testbeds-list-title marcpare's flowpen
+      
+      div(data-hook="models-list")
+          
+    div.brand
+      span.brand-quiet by 
+      span.tile 
+      span 
+        a(href="http://www.smallredtile.com") small red tile inc
+    
+  div.tb-middle
+    div.tb-main    
+      div.tb-top
+        h1.tb-title Advect Backtrace
+
+      if model.error
+        div #{model.errorMessage}
+    
+      div.tb-canvas-container
+        
+        div.tb-canvas-inner(style="width: #{model.width}px", data-hook="canvas")
+          canvas(width="#{model.width}", height="#{model.height}", data-hook="test-canvas")
+      
+        div.tb-table-container(data-hook="table")
+      
+        div.tb-controls
+          div.tb-controls-right
+            a(data-hook="visual-view") Visual
+            a(data-hook="table-view") Table
+            
+          div.tb-controls-left          
+            a(data-hook="control-reset")
+              i.fa.fa-fast-backward.fa-leg
+            a(data-hook="control-play")
+              i.fa.fa-play.fa-lg
+            a(data-hook="control-step")
+              i.fa.fa-step-forward.fa-lg
+            span.tb-frame Frame 
+              span(data-hook="frame")
