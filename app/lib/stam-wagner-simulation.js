@@ -22,11 +22,16 @@ module.exports = function (canvas, options) {
     
   let WIDTH = options.columns || 128;
   let HEIGHT = options.rows || 128;
-  let sx = WIDTH/canvas.clientWidth;
-  let sy = HEIGHT/canvas.clientHeight;
+  let sx;
+  let sy;
   let ctx = canvas.getContext('2d');
   
-  console.log(canvas.clientWidth);
+  function resize () {
+    sx = WIDTH/canvas.clientWidth;
+    sy = HEIGHT/canvas.clientHeight;
+  }
+  
+  resize();
 
 var mouseX = 0, mouseY = 0;
 (function () {
@@ -295,5 +300,8 @@ var requestAnimationFrame = (window.requestAnimationFrame       ||
     requestAnimationFrame(animate);
 })();
 
+return {
+  resize
+};
 
 };
