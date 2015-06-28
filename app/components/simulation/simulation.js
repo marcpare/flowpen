@@ -6,7 +6,14 @@ module.exports = AmpersandView.extend({
   
   render () {
     this.renderWithTemplate(this);
-    StamWagnerSimulation(this.query('#c'));
+    
+    // Hack for now that makes sure the element
+    // is attached to the dom before kicking
+    // off the simulation
+    window.setTimeout(() => {
+      StamWagnerSimulation(this.query('#c'));  
+    }, 300);
+    
     return this;
   }
 });
