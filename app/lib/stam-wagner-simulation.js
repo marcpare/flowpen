@@ -4,13 +4,29 @@
 // http://29a.ch/sandbox/2012/fluidcanvas/
 // 
 
-module.exports = function (canvas) {
+// Globals
+// ---------------
+//
+// WIDTH: number of columns of simulation
+// HEIGHT: number of row of simulation
+//
+//
+//
+// Options
+// ------------
+//
+// rows: WIDTH
+// columns: HEIGHT
+
+module.exports = function (canvas, options) {
     
-var WIDTH = canvas.width,
-    HEIGHT = canvas.height,
-    sx = canvas.width/canvas.clientWidth,
-    sy = canvas.height/canvas.clientHeight,
-    ctx = canvas.getContext('2d');
+  let WIDTH = options.columns || 128;
+  let HEIGHT = options.rows || 128;
+  let sx = WIDTH/canvas.clientWidth;
+  let sy = HEIGHT/canvas.clientHeight;
+  let ctx = canvas.getContext('2d');
+  
+  console.log(canvas.clientWidth);
 
 var mouseX = 0, mouseY = 0;
 (function () {

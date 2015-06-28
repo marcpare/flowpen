@@ -13,7 +13,15 @@ module.exports = AmpersandView.extend({
     
     simulation: {
       container: '#simulation-container',
-      constructor: SimulationView
+      prepareView (el) {
+        return new SimulationView({
+          el: el,
+          simulationOptions: {
+            rows: 128,
+            columns: 256 
+          }
+        });
+      }
     }
   }
 });
