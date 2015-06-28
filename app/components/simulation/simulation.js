@@ -16,8 +16,10 @@ module.exports = AmpersandView.extend({
   recenter () {
     
     // Update the canvas position in the DOM
-    let a = this.el.offsetWidth / this.simulationOptions.columns;
-    let b = this.el.offsetHeight / this.simulationOptions.rows;
+    let W = this.el.offsetWidth;
+    let H = this.el.offsetHeight;
+    let a = W / this.simulationOptions.columns;
+    let b = H / this.simulationOptions.rows;
     let c = Math.min(a, b);
     
     let width = this.simulationOptions.columns * c;
@@ -26,8 +28,19 @@ module.exports = AmpersandView.extend({
     width = Math.floor(width);
     height = Math.floor(height);
     
-    this.elCanvas.style.width = width + 'px';
-    this.elCanvas.style.height = height + 'px';
+    this.elCanvas.style.width = `${width}px`;
+    this.elCanvas.style.height = `${height}px`;
+    
+    console.log(`${width} px`);
+    
+    let left = (W - width) / 2.0;
+    let top = (H - height) / 2.0;
+    
+    left = Math.floor(left);
+    top = Math.floor(top);
+    
+    this.elCanvas.style.marginTop = `${top}px`;
+    this.elCanvas.style.marginLeft = `${left}px`;
     
     // Update the simulation globals
     this.simulation.resize();
