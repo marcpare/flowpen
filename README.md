@@ -29,4 +29,13 @@ Running:
 TODO
 ---
 
+- gut and rewrite the container.
+  - globals ok for simulation
+  - no zoom and pan support ; always fill the entire viewport
+  - really lean on AmpersandJS; don't just reach for messy jquery
+  - ES6 everything?
+  - support routes?
+  - save the model state in the URL? (if possible)
+  
+
 - do app/ directory link in npm install
