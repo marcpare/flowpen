@@ -31,10 +31,9 @@ Run:
 TODO
 ---
 
-- NEXT: vertical/horizontal centering of sim
-- NEXT: resize on browser window resize
+- migrate wall tool
 
-- NEXT: migrate wall, inlet tools
+- NEXT: inlet tool
 - NEXT: clean up the wagner simulation code (a new lib, speed up, too?)
   - all and inlet bindings
 
