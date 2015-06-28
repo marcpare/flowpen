@@ -25,8 +25,10 @@ module.exports = function (canvas, options) {
   let sx;
   let sy;
   let ctx = canvas.getContext('2d');
+  let boundingRect = false;
   
   function resize () {
+    boundingRect = canvas.getBoundingClientRect();
     sx = WIDTH/canvas.clientWidth;
     sy = HEIGHT/canvas.clientHeight;
   }
@@ -35,13 +37,10 @@ module.exports = function (canvas, options) {
 
 var mouseX = 0, mouseY = 0;
 (function () {
-  
-  var rect = false;
-  
+    
   canvas.addEventListener('mousemove', function (e) {
-    if (!rect) rect = canvas.getBoundingClientRect();
-    mouseX = (e.clientX - rect.left)|0;
-    mouseY = (e.clientY - rect.top)|0;
+    mouseX = (e.clientX - boundingRect.left)|0;
+    mouseY = (e.clientY - boundingRect.top)|0;
   }); 
 
 })();
