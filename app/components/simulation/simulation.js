@@ -48,6 +48,21 @@ module.exports = AmpersandView.extend({
     
   },
   
+  initializeSvg () {
+        
+    // Initialize svg overlay and elements
+    this.svgOverlay = Snap('#overlay');
+    
+    this.svgTraceNode = this.svgOverlay
+      .circle(0, 0, 30)
+      .attr({
+        visibility: 'visible',
+        fill: '#bada55'
+      })
+      .addClass('spectral');
+    
+  },
+  
   render () {
     this.renderWithTemplate(this);
     
@@ -57,6 +72,8 @@ module.exports = AmpersandView.extend({
     window.setTimeout(this.startSimulation.bind(this), 300);
     
     this.elCanvas = this.query('#c');
+    
+    window.setTimeout(this.initializeSvg.bind(this), 300);
     
     return this;
   }

@@ -17,6 +17,11 @@ let StartWallAction = () => {
   Snack.message = 'Choose starting point';
   Snack.action = 'Cancel';
   Snack.actionHandler = CancelWallAction;
+  
+  // Update cursor
+  
+  // Update click handler to transition to next state
+  
 };
 
 

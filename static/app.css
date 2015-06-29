@@ -6,6 +6,9 @@ z-index
 101: overlay
 102: snacks
 */
+
+/* Global styles */
+
 body { 
   font-family: "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
   font-size: 13px;
@@ -28,13 +31,19 @@ a {
     -ms-user-select: none;
     user-select: none;
 }
-#c {
+
+/* Simulation canvas */
+
+#c { 
   background-color: #ccc;
 }
 #overlay {
+  border: 1px solid red;
   position: absolute;
   top: 0;
   left: 0;
+  width: 100%;
+  height: 100%;
   z-index: 101;
 }
 #overlay > * { 
@@ -120,6 +129,9 @@ a {
   cursor: pointer;
   padding-left: 20px;
 }
+
+/* Editor elements */
+
 .arrow {
   stroke: black;
   stroke-width: 0.5;
@@ -139,154 +151,4 @@ a {
 .sensor-label {
 	fill: white; 
 	font-size: 3px;
-}
-
-/* testbeds */
-.brand {
-  background: #1e1e1e;
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 200px;
-  height: 14px; 
-  padding: 5px 0;
-  text-align: center;
-}
-.brand a {
-  color: white;
-  text-decoration: none;
-}
-.brand a:hover {
-  text-decoration: underline;
-}
-.brand-quiet {
-  color: #bcbcbc; 
-}
-.tile {
-  background-color: #cc0000;
-  width: 8px;
-  height: 8px;
-  display: inline-block;
-  margin: 0 0 0 5px;
-}
-.tb-container { }
-.tb-left { 
-  background: #424242; 
-  color: #f3f3f3;
-  position: absolute; 
-  top: 0;
-  left: 0; 
-  bottom: 0; 
-  width: 200px; 
-}
-.tb-middle { 
-  overflow-y: scroll;
-  position: absolute; 
-  top: 0; 
-  right: 0px; 
-  left: 200px; 
-  bottom: 0; 
-}
-.testbeds-list {
-  
-}
-.testbeds-list-title {
-  font-size: 15px; 
-  font-weight: 500; 
-  margin: 0; 
-  padding: 40px 20px;
-}
-.testbed-item {
-  display: flex;
-  align-items: center;
-  cursor: pointer;
-  height: 40px; 
-  padding: 15px 20px;
-}
-.testbed-item:hover {
-  background: #333;
-}
-.tb-item-active, .tb-item-active:hover { 
-  background: linear-gradient(to bottom, #4096ee 0%,#077aed 100%);
-}
-.tb-item-title {
-  margin: 10px 0; 
-}
-.tb-item-subtitle { 
- color: #bcbcbc; 
-}
-.tb-main {
-  background: #ddd;
-}
-.tb-top {
-  background: #fff;
-  border-bottom: 1px solid #b2b2b2; 
-}
-.tb-title {
-  margin: 0; 
-  font-weight: 500;
-  padding: 40px 30px;
-}
-.tb-canvas-container {
-  border: 1px solid #b2b2b2;
-  background: #424242;
-  border-radius: 4px;
-  margin: 20px; 
-}
-.tb-canvas-inner {
-  margin: 19px auto;
-  margin-bottom: 18px;
-}
-.tb-canvas-action-controls {
-  float: right;
-}
-.tb-canvas-action-controls a {
-  display: inline-block;
-  padding: 10px 15px;
-}
-.tb-controls {
-  user-select: none;
-  -webkit-user-select: none;
-  color: #b0b0b0;
-  height: 40px;
-  padding: 0 20px;
-}
-.tb-controls a {
-  color: #b0b0b0;
-  display: inline-block;
-  padding: 10px 10px;
-  text-decoration: none;
-}
-.tb-controls a.tb-control-active {
-  color: #f3f3f3;
-}
-.tb-controls-right {
-  float: right;
-}
-.tb-frame {
-  padding: 0 15px;
-}
-.tb-src {
-  border: 1px solid #b2b2b2;
-  background: #fff;
-  border-radius: 4px;
-  margin: 20px; 
-  padding: 20px;
-}
-.tb-src h5 {
-  font-size: 15px; 
-  font-weight: 500; 
-}
-
-/* table */
-.tb-table {
-  border: 1px solid #bcbcbc;
-  margin: 20px auto;
-  color: #f3f3f3;
-}
-.tb-table td {
-  border: 1px dotted #bcbcbc;
-  padding: 5px;
-  text-align: center;
-  vertical-align: middle;
 }

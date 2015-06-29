@@ -31,9 +31,11 @@ Run:
 TODO
 ---
 
-- TODO: move app screen and template to /components
-
 - migrate wall tool
+  - get a node following the mouse cursor
+  - NEXT: update cursor on start
+  - NEXT: add click handler for start wall
+  - NEXT: update cursor line drawing after click
 
 - NEXT: inlet tool
 - NEXT: clean up the wagner simulation code (a new lib, speed up, too?)
