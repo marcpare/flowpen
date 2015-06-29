@@ -1,5 +1,5 @@
 let AmpersandRouter = require('ampersand-router');
-let AppScreen = require('app/screens/app.js');
+let AppScreen = require('app/components/app/app');
 let app = require('ampersand-app');
 
 let AppRouter = AmpersandRouter.extend({

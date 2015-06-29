@@ -4,7 +4,7 @@ let SimulationView = require('app/components/simulation/simulation');
 let SnackView = require('app/components/snack/snack');
 
 module.exports = AmpersandView.extend({
-  template: require('app/templates/app.jade'),
+  template: require('app/components/app/app.jade'),
   
   subviews: {
     sidebar: {
