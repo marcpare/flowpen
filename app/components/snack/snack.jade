@@ -2,4 +2,4 @@ div#snack-container
 	div.snack #{model.message}
 		if model.action
 			span.snack-action
-				a(role="snack-action") #{model.action}
+				a(data-hook="snack-action") #{model.action}

@@ -10,6 +10,9 @@ let Snack = State.extend({
     },
     action: {
       type: 'string'
+    },
+    actionHandler: {
+      type: 'function'
     }
   }
 });
