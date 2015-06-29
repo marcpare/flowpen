@@ -1,6 +1,7 @@
 let AmpersandView = require('ampersand-view');
 let SidebarView = require('app/components/sidebar/sidebar');
 let SimulationView = require('app/components/simulation/simulation');
+let SnackView = require('app/components/snack/snack');
 
 module.exports = AmpersandView.extend({
   template: require('app/templates/app.jade'),
@@ -22,6 +23,11 @@ module.exports = AmpersandView.extend({
           }
         });
       }
+    },
+    
+    snack: {
+      container: '#snack-container',
+      constructor: SnackView
     }
   }
 });

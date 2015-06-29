@@ -31,6 +31,8 @@ Run:
 TODO
 ---
 
+- TODO: move app screen and template to /components
+
 - migrate wall tool
 
 - NEXT: inlet tool
