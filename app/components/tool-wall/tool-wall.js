@@ -1,8 +1,6 @@
-let AmpersandView = require('ampersand-view');
+let ToolView = require('app/components/tool/tool');
 
-module.exports = AmpersandView.extend({
-  template: require('app/components/tool-wall/tool-wall.jade'),
-  
+module.exports = ToolView.extend({  
   initialize (options) {
     this.caption = 'Wall';
   }
