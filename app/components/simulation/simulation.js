@@ -1,14 +1,25 @@
 let AmpersandView = require('ampersand-view');
-let StamWagnerSimulation = require('app/lib/stam-wagner-simulation');
 let WindowWatcher = require('window-watcher');
+let StamWagnerSimulation = require('app/lib/stam-wagner-simulation');
+let Cursor = require('app/models/cursor');
 
 module.exports = AmpersandView.extend({
   template: require('app/components/simulation/simulation.jade'),
+  
+  events: {
+    'mousemove #c': 'mouseMove'
+  },
+  
+  mouseMove (e) {
+    Cursor.x = e.offsetX;
+    Cursor.y = e.offsetY;
+  },
   
   initialize (options) {
     this.simulationOptions = options.simulationOptions;
     
     WindowWatcher.on('resize', this.recenter.bind(this));
+    this.listenTo(Cursor, 'change', this.updateCursor.bind(this));
   },
   
   startSimulation () {
@@ -43,6 +54,12 @@ module.exports = AmpersandView.extend({
     this.elCanvas.style.marginTop = `${top}px`;
     this.elCanvas.style.marginLeft = `${left}px`;
     
+    // Update the overlay svg dimensions, as well
+    this.elOverlay.style.width = this.elCanvas.style.width;
+    this.elOverlay.style.height = this.elCanvas.style.height;
+    this.elOverlay.style.marginTop = this.elCanvas.style.marginTop;
+    this.elOverlay.style.marginLeft = this.elCanvas.style.marginLeft;
+        
     // Update the simulation globals
     this.simulation.resize();
     
@@ -63,6 +80,15 @@ module.exports = AmpersandView.extend({
     
   },
   
+  updateCursor () {
+    
+    this.svgTraceNode.attr({
+      cx: Cursor.x,
+      cy: Cursor.y
+    });
+    
+  },
+  
   render () {
     this.renderWithTemplate(this);
     
@@ -72,6 +98,7 @@ module.exports = AmpersandView.extend({
     window.setTimeout(this.startSimulation.bind(this), 300);
     
     this.elCanvas = this.query('#c');
+    this.elOverlay = this.query('#overlay');
     
     window.setTimeout(this.initializeSvg.bind(this), 300);
     
