@@ -8,6 +8,7 @@
 
 let Snack = require('app/models/snack');
 let Cursor = require('app/models/cursor');
+let Bus = require('app/lib/bus');
 
 let CancelWallAction = () => {
   Snack.visible = false;
@@ -23,13 +24,16 @@ let StartWallAction = () => {
   Cursor.pointer = 'trace-node';
   
   // Update click handler to transition to next state
-  // Bus.once('canvas-click', e => {
-  //
-  //   // mark the starting point
-  //   PendingWall.start(e.x, e.y);
-  //
-  //   Editor.FinishWallAction();
-  // });
+  Bus.once('canvas-click', e => {
+
+    console.log('got the canvas click');
+    console.log(e);
+    
+    // mark the starting point
+    PendingWall.start(e.x, e.y);
+
+    Editor.FinishWallAction();
+  });
   
 };
 

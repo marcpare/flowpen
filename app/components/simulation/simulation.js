@@ -2,17 +2,26 @@ let AmpersandView = require('ampersand-view');
 let WindowWatcher = require('window-watcher');
 let StamWagnerSimulation = require('app/lib/stam-wagner-simulation');
 let Cursor = require('app/models/cursor');
+let Bus = require('app/lib/bus');
 
 module.exports = AmpersandView.extend({
   template: require('app/components/simulation/simulation.jade'),
   
   events: {
-    'mousemove #c': 'mouseMove'
+    'mousemove #c': 'mouseMove',
+    'click #c': 'triggerClick'
   },
   
   mouseMove (e) {
     Cursor.x = e.offsetX;
     Cursor.y = e.offsetY;
+  },
+  
+  triggerClick (e) {
+    Bus.trigger('canvas-click', {
+      x: e.offsetX,
+      y: e.offsetY
+    });
   },
   
   initialize (options) {
