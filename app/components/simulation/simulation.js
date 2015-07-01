@@ -54,7 +54,7 @@ module.exports = AmpersandView.extend({
     this.elCanvas.style.marginTop = `${top}px`;
     this.elCanvas.style.marginLeft = `${left}px`;
     
-    // Update the overlay svg dimensions, as well
+    // Update the overlay svg dimensions to match the canvas
     this.elOverlay.style.width = this.elCanvas.style.width;
     this.elOverlay.style.height = this.elCanvas.style.height;
     this.elOverlay.style.marginTop = this.elCanvas.style.marginTop;
