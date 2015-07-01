@@ -71,9 +71,9 @@ module.exports = AmpersandView.extend({
     this.svgOverlay = Snap('#overlay');
     
     this.svgTraceNode = this.svgOverlay
-      .circle(0, 0, 30)
+      .circle(0, 0, 10)
       .attr({
-        visibility: 'visible',
+        visibility: 'hidden',
         fill: '#bada55'
       })
       .addClass('spectral');
@@ -81,7 +81,7 @@ module.exports = AmpersandView.extend({
   },
   
   updateCursor () {
-    
+        
     if (Cursor.pointer === 'none') {
       this.svgTraceNode.attr({
         visibility: 'hidden'
@@ -90,7 +90,7 @@ module.exports = AmpersandView.extend({
       this.svgTraceNode.attr({
         cx: Cursor.x,
         cy: Cursor.y,
-        visibilty: 'visible'
+        visibility: 'visible'
       });
     }
         

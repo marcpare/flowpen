@@ -23,13 +23,13 @@ let StartWallAction = () => {
   Cursor.pointer = 'trace-node';
   
   // Update click handler to transition to next state
-  Bus.once('canvas-click', e => {
-    
-    // mark the starting point
-    PendingWall.start(e.x, e.y);
-    
-    Editor.FinishWallAction();
-  });
+  // Bus.once('canvas-click', e => {
+  //
+  //   // mark the starting point
+  //   PendingWall.start(e.x, e.y);
+  //
+  //   Editor.FinishWallAction();
+  // });
   
 };
 

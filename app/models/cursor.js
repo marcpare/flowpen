@@ -3,14 +3,17 @@ let State = require('ampersand-state');
 let Cursor = State.extend({
   props: {
     x: {
-      type: 'number'
+      type: 'number',
+      default: -100
     },
     y: {
-      type: 'number'
+      type: 'number',
+      default: -100
     },
     pointer: {
       type: 'string',
-      values: ['none', 'trace-node']
+      values: ['none', 'trace-node'],
+      default: 'none'
     }
   }
 });
