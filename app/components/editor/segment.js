@@ -10,7 +10,7 @@ let Segment = View.extend({
         strokeWidth: 2,
         strokeLinecap: 'round'
       });
-      
+    this.el = this.svg.node;
     this.listenTo(this.model, 'change', this.update.bind(this));
   },
   

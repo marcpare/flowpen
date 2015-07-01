@@ -31,6 +31,7 @@ module.exports = AmpersandView.extend({
     WindowWatcher.on('resize', this.recenter.bind(this));
     this.listenTo(Cursor, 'change', this.updateCursor.bind(this));
     this.listenTo(EditorObjects, 'add', this.addObject.bind(this));
+    this.listenTo(EditorObjects, 'remove', this.removeObject.bind(this));
   },
   
   startSimulation () {
@@ -111,6 +112,12 @@ module.exports = AmpersandView.extend({
     
     obj.view.create(this.svgOverlay);
         
+  },
+  
+  removeObject (obj) {
+    
+    obj.view.remove();
+    
   },
   
   render () {

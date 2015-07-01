@@ -14,6 +14,13 @@ let Snack = State.extend({
     actionHandler: {
       type: 'function'
     }
+  },
+  
+  clear () {
+    this.visible = false;
+    this.message = '';
+    this.action = '';
+    this.actionHandler = false;
   }
 });
 

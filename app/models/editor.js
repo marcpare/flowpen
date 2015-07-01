@@ -16,6 +16,19 @@ let CancelWallAction = () => {
 };
 
 let FinishWallAction = () => {
+  Snack.message = 'Choose ending point';
+  
+  Bus.once('canvas-click', e => {
+    
+    // clear everything
+    Snack.clear();
+    Cursor.pointer = 'none';
+    PendingWall.clear();
+    
+    // create the Wall object
+    
+    
+  });
   
 };
 

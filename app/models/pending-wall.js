@@ -12,13 +12,15 @@ let PendingWall = State.extend({
   start (x, y) {
       
     // Node to mark the start position
-    EditorObjects.add(new Node({
+    this.node = new Node({
       x: x,
       y: y
-    }));
+    });
+    
+    EditorObjects.add(this.node);
     
     // A line that follows the cursor...
-    let line = new Line({
+    this.line = new Line({
       x1: x,
       y1: y,
       x2: x,
@@ -26,11 +28,23 @@ let PendingWall = State.extend({
     });
     
     this.listenTo(Cursor, 'change', e => {
-      line.x2 = e.x;
-      line.y2 = e.y;
+      this.line.x2 = e.x;
+      this.line.y2 = e.y;
     });
 
-    EditorObjects.add(line);
+    EditorObjects.add(this.line);
+    
+  },
+  
+  clear () {
+    
+    EditorObjects.remove(this.node);
+    EditorObjects.remove(this.line);
+    
+    delete this.node;
+    delete this.line;
+    
+    this.stopListening(Cursor);
     
   }
   
