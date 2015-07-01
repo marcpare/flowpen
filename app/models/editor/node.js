@@ -1,5 +1,5 @@
 let State = require('ampersand-state');
-let NodeView = require('app/components/geom/node');
+let NodeView = require('app/components/editor/node');
 
 let Node = State.extend({
   
