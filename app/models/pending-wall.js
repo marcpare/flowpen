@@ -21,14 +21,11 @@ let PendingWall = State.extend({
     let line = new Line({
       x1: x,
       y1: y,
-      x2: x + 100,
-      y2: y + 100
+      x2: x,
+      y2: y
     });
     
     this.listenTo(Cursor, 'change', e => {
-      
-      // console.log('updating cursor position');
-      
       line.x2 = e.x;
       line.y2 = e.y;
     });
