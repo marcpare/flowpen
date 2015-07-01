@@ -2,6 +2,7 @@ let AmpersandView = require('ampersand-view');
 let WindowWatcher = require('window-watcher');
 let StamWagnerSimulation = require('app/lib/stam-wagner-simulation');
 let Cursor = require('app/models/cursor');
+let EditorObjects = require('app/models/editor-objects');
 let Bus = require('app/lib/bus');
 
 module.exports = AmpersandView.extend({
@@ -29,6 +30,7 @@ module.exports = AmpersandView.extend({
     
     WindowWatcher.on('resize', this.recenter.bind(this));
     this.listenTo(Cursor, 'change', this.updateCursor.bind(this));
+    this.listenTo(EditorObjects, 'add', this.addObject.bind(this));
   },
   
   startSimulation () {
@@ -102,6 +104,12 @@ module.exports = AmpersandView.extend({
         visibility: 'visible'
       });
     }
+        
+  },
+  
+  addObject (obj) {
+    
+    obj.view.create(this.svgOverlay);
         
   },
   

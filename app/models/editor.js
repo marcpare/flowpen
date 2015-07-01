@@ -9,9 +9,14 @@
 let Snack = require('app/models/snack');
 let Cursor = require('app/models/cursor');
 let Bus = require('app/lib/bus');
+let PendingWall = require('app/models/pending-wall');
 
 let CancelWallAction = () => {
   Snack.visible = false;
+};
+
+let FinishWallAction = () => {
+  
 };
 
 let StartWallAction = () => {
@@ -26,13 +31,12 @@ let StartWallAction = () => {
   // Update click handler to transition to next state
   Bus.once('canvas-click', e => {
 
-    console.log('got the canvas click');
-    console.log(e);
-    
     // mark the starting point
     PendingWall.start(e.x, e.y);
-
-    Editor.FinishWallAction();
+    
+    // transition to finishWall state
+    FinishWallAction();
+    
   });
   
 };
@@ -40,6 +44,7 @@ let StartWallAction = () => {
 
 module.exports = {
   
-  startWall: StartWallAction
+  startWall: StartWallAction,
+  finishWall: FinishWallAction
   
 };
