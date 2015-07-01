@@ -62,7 +62,7 @@ module.exports = AmpersandView.extend({
         
     // Update the simulation globals
     this.simulation.resize();
-    
+  
   },
   
   initializeSvg () {
@@ -82,11 +82,18 @@ module.exports = AmpersandView.extend({
   
   updateCursor () {
     
-    this.svgTraceNode.attr({
-      cx: Cursor.x,
-      cy: Cursor.y
-    });
-    
+    if (Cursor.pointer === 'none') {
+      this.svgTraceNode.attr({
+        visibility: 'hidden'
+      });
+    } else if (Cursor.pointer === 'trace-node') {
+      this.svgTraceNode.attr({
+        cx: Cursor.x,
+        cy: Cursor.y,
+        visibilty: 'visible'
+      });
+    }
+        
   },
   
   render () {

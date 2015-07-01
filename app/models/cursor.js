@@ -7,6 +7,10 @@ let Cursor = State.extend({
     },
     y: {
       type: 'number'
+    },
+    pointer: {
+      type: 'string',
+      values: ['none', 'trace-node']
     }
   }
 });

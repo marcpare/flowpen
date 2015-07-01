@@ -7,6 +7,7 @@
 //
 
 let Snack = require('app/models/snack');
+let Cursor = require('app/models/cursor');
 
 let CancelWallAction = () => {
   Snack.visible = false;
