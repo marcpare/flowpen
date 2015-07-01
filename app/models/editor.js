@@ -23,10 +23,9 @@ let FinishWallAction = () => {
     // clear everything
     Snack.clear();
     Cursor.pointer = 'none';
-    PendingWall.clear();
     
     // create the Wall object
-    
+    PendingWall.finish(e.x, e.y);
     
   });
   

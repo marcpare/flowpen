@@ -5,11 +5,14 @@ let State = require('ampersand-state');
 let Cursor = require('app/models/cursor');
 let EditorObjects = require('app/models/editor-objects');
 let Node = require('app/models/editor/node');
-let Line = require('app/models/editor/segment');
+let Segment = require('app/models/editor/segment');
 
 let PendingWall = State.extend({
   
   start (x, y) {
+      
+    this.x1 = x;
+    this.y1 = y;  
       
     // Node to mark the start position
     this.node = new Node({
@@ -19,8 +22,8 @@ let PendingWall = State.extend({
     
     EditorObjects.add(this.node);
     
-    // A line that follows the cursor...
-    this.line = new Line({
+    // A segment that follows the cursor...
+    this.segment = new Segment({
       x1: x,
       y1: y,
       x2: x,
@@ -28,21 +31,35 @@ let PendingWall = State.extend({
     });
     
     this.listenTo(Cursor, 'change', e => {
-      this.line.x2 = e.x;
-      this.line.y2 = e.y;
+      this.segment.x2 = e.x;
+      this.segment.y2 = e.y;
     });
 
-    EditorObjects.add(this.line);
+    EditorObjects.add(this.segment);
+    
+  },
+  
+  finish (x, y) {
+    
+    let wall = new Segment({
+      x1: this.x1,
+      y1: this.y1,
+      x2: x,
+      y2: y
+    });
+    EditorObjects.add(wall);
+    
+    this.clear();
     
   },
   
   clear () {
     
     EditorObjects.remove(this.node);
-    EditorObjects.remove(this.line);
+    EditorObjects.remove(this.segment);
     
     delete this.node;
-    delete this.line;
+    delete this.segment;
     
     this.stopListening(Cursor);
     
