@@ -1,5 +1,5 @@
 let EditorObjects = require('app/models/editor-objects');
-let Node = require('app/models/geom/node');
+let Node = require('app/models/editor/node');
 
 // PendingWall
 // singleton that tracks an in progress Wall creation
