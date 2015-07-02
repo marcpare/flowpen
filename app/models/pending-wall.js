@@ -47,6 +47,7 @@ let PendingWall = State.extend({
       x2: x,
       y2: y
     });
+    
     EditorObjects.add(wall);
     
     this.clear();
