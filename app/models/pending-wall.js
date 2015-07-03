@@ -4,6 +4,7 @@
 let State = require('ampersand-state');
 let Cursor = require('app/models/cursor');
 let EditorObjects = require('app/models/editor-objects');
+let Simulation = require('app/models/simulation');
 let Node = require('app/models/editor/node');
 let Segment = require('app/models/editor/segment');
 
@@ -41,14 +42,25 @@ let PendingWall = State.extend({
   
   finish (x, y) {
     
+    // Add a Segment object
     let wall = new Segment({
       x1: this.x1,
       y1: this.y1,
       x2: x,
       y2: y
     });
-    
+
     EditorObjects.add(wall);
+    
+    // Add boundaries to the simulation
+    Simulation.addWall({
+      x1: this.x1,
+      y1: this.y1,
+      x2: x,
+      y2: y,
+      thickness: 20
+    });
+    
     
     this.clear();
     

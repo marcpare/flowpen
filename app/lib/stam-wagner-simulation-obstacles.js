@@ -315,6 +315,10 @@ function draw(ux, uy, p){
     ctx.putImageData(imageData, 0, 0);
 }
 
+function addWall (options) {
+  console.log("going to add a wall");
+}
+
 
 var requestAnimationFrame = (window.requestAnimationFrame       || 
               window.webkitRequestAnimationFrame || 
@@ -332,7 +336,8 @@ var requestAnimationFrame = (window.requestAnimationFrame       ||
 })();
 
 return {
-  resize
+  resize,
+  addWall
 };
 
 };

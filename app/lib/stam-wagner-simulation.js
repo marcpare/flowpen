@@ -97,6 +97,7 @@ function simulate(){
     u0y = u1y;
     u1y = aux;
 }
+
 var lastMouseX = mouseX,
     lastMouseY = mouseY;
 
