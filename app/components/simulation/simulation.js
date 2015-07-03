@@ -73,7 +73,11 @@ module.exports = AmpersandView.extend({
     this.elOverlay.style.height = this.elCanvas.style.height;
     this.elOverlay.style.marginTop = this.elCanvas.style.marginTop;
     this.elOverlay.style.marginLeft = this.elCanvas.style.marginLeft;
-        
+      
+    // Update the scale frame so that simulation and overlay
+    // coordinate systems match
+    this.elScaleFrame.setAttribute('transform', `scale(${c})`);
+       
     // Update the simulation globals
     this.simulation.resize();
   
@@ -82,7 +86,7 @@ module.exports = AmpersandView.extend({
   initializeSvg () {
         
     // Initialize svg overlay and elements
-    this.svgOverlay = Snap('#overlay');
+    this.svgOverlay = Snap('#scale-frame');
     
     this.svgTraceNode = this.svgOverlay
       .circle(0, 0, 10)
@@ -132,6 +136,7 @@ module.exports = AmpersandView.extend({
     
     this.elCanvas = this.query('#c');
     this.elOverlay = this.query('#overlay');
+    this.elScaleFrame = this.query('#scale-frame');
     
     window.setTimeout(this.initializeSvg.bind(this), 300);
     

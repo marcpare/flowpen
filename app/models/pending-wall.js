@@ -61,7 +61,6 @@ let PendingWall = State.extend({
       thickness: 20
     });
     
-    
     this.clear();
     
   },
