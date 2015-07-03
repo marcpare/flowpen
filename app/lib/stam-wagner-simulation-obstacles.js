@@ -322,15 +322,11 @@ function addWall (options) {
   
   line = new Geom.Line(options.x1, options.y1, options.x2, options.y2);
   
-  console.log('adding wall');
-  console.log(line);
-  
   for (x = 0; x < WIDTH; x++) {
     for (y = 0; y < HEIGHT; y++) {
       dist = Geom.distToSegment(Geom.p(x, y), line);
       
       if (dist < thickness) {
-        console.log(`Marked ${x} ${y}`);
         isFluid[I(x, y)] = false;
       }
     }

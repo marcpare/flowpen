@@ -58,7 +58,7 @@ let PendingWall = State.extend({
       y1: this.y1,
       x2: x,
       y2: y,
-      thickness: 20
+      thickness: 2
     });
     
     this.clear();

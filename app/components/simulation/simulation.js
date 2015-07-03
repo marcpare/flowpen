@@ -89,7 +89,7 @@ module.exports = AmpersandView.extend({
     this.svgOverlay = Snap('#scale-frame');
     
     this.svgTraceNode = this.svgOverlay
-      .circle(0, 0, 10)
+      .circle(0, 0, 2)
       .attr({
         visibility: 'hidden',
         fill: '#bada55'
