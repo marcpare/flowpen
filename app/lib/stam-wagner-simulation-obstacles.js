@@ -18,6 +18,8 @@
 // rows: WIDTH
 // columns: HEIGHT
 
+let Geom = require('app/lib/geom');
+
 module.exports = function (canvas, options) {
     
   let WIDTH = options.columns || 128;
@@ -51,8 +53,6 @@ ctx.fillRect(0, 0, WIDTH, HEIGHT);
 let N = WIDTH*HEIGHT;
 let isFluid = new Array(N);
 for (let i = 0; i < N; i++) isFluid[i] = true;
-
-for (let i = 2000; i < 2100; i++) isFluid[i] = false;
 
 var imageData = ctx.getImageData(0, 0, WIDTH, HEIGHT),
     velocityField0 = new Float32Array(N*2),
@@ -316,7 +316,26 @@ function draw(ux, uy, p){
 }
 
 function addWall (options) {
-  console.log("going to add a wall");
+  
+  let x, y, dist, line, thickness;
+  thickness = options.thickness;
+  
+  line = new Geom.Line(options.x1, options.y1, options.x2, options.y2);
+  
+  console.log('adding wall');
+  console.log(line);
+  
+  for (x = 0; x < WIDTH; x++) {
+    for (y = 0; y < HEIGHT; y++) {
+      dist = Geom.distToSegment(Geom.p(x, y), line);
+      
+      if (dist < thickness) {
+        console.log(`Marked ${x} ${y}`);
+        isFluid[I(x, y)] = false;
+      }
+    }
+  }
+
 }
 
 
