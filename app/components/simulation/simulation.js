@@ -15,8 +15,8 @@ module.exports = AmpersandView.extend({
   },
   
   mouseMove (e) {
-    Cursor.x = e.offsetX;
-    Cursor.y = e.offsetY;
+    Cursor.x = e.offsetX / this.scale;
+    Cursor.y = e.offsetY / this.scale;
   },
   
   triggerClick (e) {
@@ -49,6 +49,8 @@ module.exports = AmpersandView.extend({
     let a = W / this.simulationOptions.columns;
     let b = H / this.simulationOptions.rows;
     let c = Math.min(a, b);
+    
+    this.scale = c;
     
     let width = this.simulationOptions.columns * c;
     let height = this.simulationOptions.rows * c;

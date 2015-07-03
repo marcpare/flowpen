@@ -327,6 +327,7 @@ function addWall (options) {
       dist = Geom.distToSegment(Geom.p(x, y), line);
       
       if (dist < thickness) {
+        console.log(`Marked ${x} ${y}`);
         isFluid[I(x, y)] = false;
       }
     }
