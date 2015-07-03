@@ -19,7 +19,8 @@ module.exports = AmpersandView.extend({
           el: el,
           simulationOptions: {
             rows: 128,
-            columns: 256 
+            columns: 256,
+            debugBoundaries: true
           }
         });
       }

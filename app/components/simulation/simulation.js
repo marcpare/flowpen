@@ -1,6 +1,6 @@
 let AmpersandView = require('ampersand-view');
 let WindowWatcher = require('window-watcher');
-let StamWagnerSimulation = require('app/lib/stam-wagner-simulation');
+let StamWagnerSimulation = require('app/lib/stam-wagner-simulation-obstacles');
 let Cursor = require('app/models/cursor');
 let EditorObjects = require('app/models/editor-objects');
 let Bus = require('app/lib/bus');
