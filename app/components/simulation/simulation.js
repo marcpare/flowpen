@@ -21,8 +21,8 @@ module.exports = AmpersandView.extend({
   
   triggerClick (e) {
     Bus.trigger('canvas-click', {
-      x: e.offsetX,
-      y: e.offsetY
+      x: e.offsetX / this.scale,
+      y: e.offsetY / this.scale
     });
   },
   
