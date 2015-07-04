@@ -11,10 +11,6 @@ let Cursor = require('app/models/cursor');
 let Bus = require('app/lib/bus');
 let PendingWall = require('app/models/pending-wall');
 
-let CancelWallAction = () => {
-  Snack.visible = false;
-};
-
 let FinishWallAction = () => {
   Snack.message = 'Choose ending point';
   
