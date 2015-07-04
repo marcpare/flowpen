@@ -51,6 +51,7 @@ let StartWallAction = () => {
   };
   Bus.once('canvas-click', onCanvasClick);
   
+  // Cleanup on cancel
   Snack.actionHandler = () => {
     Snack.visible = false;
     Cursor.pointer = 'none';
