@@ -35,13 +35,12 @@ let StartWallAction = () => {
   Snack.visible = true;
   Snack.message = 'Choose starting point';
   Snack.action = 'Cancel';
-  Snack.actionHandler = CancelWallAction;
   
   // Update cursor
   Cursor.pointer = 'trace-node';
   
   // Update click handler to transition to next state
-  Bus.once('canvas-click', e => {
+  let onCanvasClick = e => {
 
     // mark the starting point
     PendingWall.start(e.x, e.y);
@@ -49,7 +48,14 @@ let StartWallAction = () => {
     // transition to finishWall state
     FinishWallAction();
     
-  });
+  };
+  Bus.once('canvas-click', onCanvasClick);
+  
+  Snack.actionHandler = () => {
+    Snack.visible = false;
+    Cursor.pointer = 'none';
+    Bus.off('canvas-click', onCanvasClick);
+  };
   
 };
 
