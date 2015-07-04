@@ -18,7 +18,7 @@ let CancelWallAction = () => {
 let FinishWallAction = () => {
   Snack.message = 'Choose ending point';
   
-  Bus.once('canvas-click', e => {
+  let onCanvasClick = e => {
     
     // clear everything
     Snack.clear();
@@ -27,7 +27,16 @@ let FinishWallAction = () => {
     // create the Wall object
     PendingWall.finish(e.x, e.y);
     
-  });
+  };
+  Bus.once('canvas-click', onCanvasClick);
+  
+  // Cleanup on cancel
+  Snack.actionHandler = () => {
+    Snack.visible = false;
+    Cursor.pointer = 'none';
+    Bus.off('canvas-click', onCanvasClick);
+    PendingWall.clear();
+  };
   
 };
 
