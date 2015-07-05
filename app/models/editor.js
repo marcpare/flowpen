@@ -6,12 +6,16 @@
 //
 //
 
+let _ = require('underscore');
 let Snack = require('app/models/snack');
 let Cursor = require('app/models/cursor');
 let Bus = require('app/lib/bus');
-let PendingWall = require('app/models/pending-wall');
+let PendingSegment = require('app/models/pending-segment');
+let EditorObjects = require('app/models/editor-objects');
+let Simulation = require('app/models/simulation');
 
-let FinishWallAction = () => {
+let FinishSegmentAction = (options) => {
+  
   Snack.message = 'Choose ending point';
   
   let onCanvasClick = e => {
@@ -21,7 +25,9 @@ let FinishWallAction = () => {
     Cursor.pointer = 'none';
     
     // create the Wall object
-    PendingWall.finish(e.x, e.y);
+    let segment = PendingSegment.finish(e.x, e.y);
+    
+    options.onComplete(segment);
     
   };
   Bus.once('canvas-click', onCanvasClick);
@@ -31,12 +37,13 @@ let FinishWallAction = () => {
     Snack.visible = false;
     Cursor.pointer = 'none';
     Bus.off('canvas-click', onCanvasClick);
-    PendingWall.clear();
+    PendingSegment.clear();
   };
   
 };
 
-let StartWallAction = () => {
+let StartSegmentAction = (options) => {
+  
   Snack.visible = true;
   Snack.message = 'Choose starting point';
   Snack.action = 'Cancel';
@@ -48,10 +55,10 @@ let StartWallAction = () => {
   let onCanvasClick = e => {
 
     // mark the starting point
-    PendingWall.start(e.x, e.y);
+    PendingSegment.start(e.x, e.y);
     
-    // transition to finishWall state
-    FinishWallAction();
+    // transition to finishSegment state
+    FinishSegmentAction(options);
     
   };
   Bus.once('canvas-click', onCanvasClick);
@@ -65,10 +72,70 @@ let StartWallAction = () => {
   
 };
 
+/*
+
+Walk the user through drawing a line segment.
+
+Options:
+
+  onComplete: callback that returns the segment
+
+*/
+let DrawSegmentAction = (options) => {
+  
+  options.onComplete = options.onComplete || _.noop;
+  
+  StartSegmentAction(options);
+  
+};
+
+let StartInletAction = () => {
+  
+  DrawSegmentAction({
+    onComplete: segment => {
+      
+      EditorObjects.add(segment);
+    
+      // Add boundaries to the simulation
+      Simulation.addWall({
+        x1: segment.x1,
+        y1: segment.y1,
+        x2: segment.x2,
+        y2: segment.y2,
+        thickness: 2
+      });
+      
+    }
+  });
+  
+};
+
+
+let StartWallAction = () => {
+  
+  DrawSegmentAction({
+    onComplete: segment => {
+      
+      EditorObjects.add(segment);
+    
+      // Add boundaries to the simulation
+      Simulation.addWall({
+        x1: segment.x1,
+        y1: segment.y1,
+        x2: segment.x2,
+        y2: segment.y2,
+        thickness: 2
+      });
+      
+    }
+  });
+  
+};
+
 
 module.exports = {
   
   startWall: StartWallAction,
-  finishWall: FinishWallAction
+  startInlet: StartInletAction
   
 };
