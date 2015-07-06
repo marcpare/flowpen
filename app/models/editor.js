@@ -13,6 +13,7 @@ let Bus = require('app/lib/bus');
 let PendingSegment = require('app/models/pending-segment');
 let EditorObjects = require('app/models/editor-objects');
 let Simulation = require('app/models/simulation');
+let Inlet = require('app/models/editor/inlet');
 
 let FinishSegmentAction = (options) => {
   
@@ -94,8 +95,12 @@ let StartInletAction = () => {
   DrawSegmentAction({
     onComplete: segment => {
       
-      EditorObjects.add(segment);
-    
+      // EditorObjects.add(segment);
+      
+      EditorObjects.add(new Inlet({
+        segment: segment
+      }));
+      
       // Add boundaries to the simulation
       Simulation.addWall({
         x1: segment.x1,
