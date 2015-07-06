@@ -94,21 +94,10 @@ let StartInletAction = () => {
   
   DrawSegmentAction({
     onComplete: segment => {
-      
-      // EditorObjects.add(segment);
-      
+            
       EditorObjects.add(new Inlet({
         segment: segment
       }));
-      
-      // Add boundaries to the simulation
-      Simulation.addWall({
-        x1: segment.x1,
-        y1: segment.y1,
-        x2: segment.x2,
-        y2: segment.y2,
-        thickness: 2
-      });
       
     }
   });
