@@ -2,6 +2,15 @@ let View = require('ampersand-view');
  
 let Arrow = View.extend({
   
+  events: {
+    'mouseover': 'mouseover'
+  },
+  
+  mouseover (e) {
+    this.segment.addClass('hover');
+    this.hoverTarget.addClass('hover');
+  },
+  
   create (svg) {
     
     this.svg = svg.group();
@@ -22,14 +31,7 @@ let Arrow = View.extend({
     this.el = this.svg.node;
     
     this.update();
-    
-    this.svg.mouseover(e => {
-
-      this.segment.addClass('hover');
-      this.hoverTarget.addClass('hover');
-
-    });
-    
+        
   },
   
   update () {
