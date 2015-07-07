@@ -8,10 +8,10 @@ let Inlet = View.extend({
     
     this.model.segment.view.create(svg);
     
-    this.arrow = new Arrow();
-    this.arrow.x = 10;
-    this.arrow.y = 10;
-    
+    this.arrow = new Arrow({
+      start: this.model.segment.midpoint()
+    });
+        
     this.arrow.view.create(svg);
     
   }

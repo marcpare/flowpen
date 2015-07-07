@@ -1,4 +1,5 @@
 let State = require('ampersand-state');
+let Geom = require('app/lib/geom');
 let SegmentView = require('app/components/editor/segment');
 
 let Segment = State.extend({
@@ -14,6 +15,10 @@ let Segment = State.extend({
     this.view = new SegmentView({
       model: this
     });
+  },
+  
+  midpoint () {
+    return (new Geom.Line(this.x1, this.y1, this.x2, this.y2)).midpoint();
   }
   
 });
