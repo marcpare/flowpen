@@ -4,18 +4,21 @@ let ArrowView = require('app/components/editor/arrow');
 let Arrow = State.extend({
   
   props: {
-    start: 'object'
+    start: 'object',
+    magnitude: 'number',
+    angle: 'number'
   },
   
   initialize (options) {
     
     let {
-      start
+      start,
+      magnitude
     } = options;
     
-    if (start) {
-      this.start = start;
-    }
+    this.start = start;
+    this.magnitude = magnitude;
+    this.angle = 90.0;
     
     this.view = new ArrowView({
       model: this
