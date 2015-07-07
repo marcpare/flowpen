@@ -23,8 +23,11 @@ let Arrow = View.extend({
     
     this.update();
     
-    this.svg.mouseover(function (e) {
-      console.log('got mouseover');
+    this.svg.mouseover(e => {
+
+      this.segment.addClass('hover');
+      this.hoverTarget.addClass('hover');
+
     });
     
   },
