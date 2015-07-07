@@ -10,9 +10,10 @@ let Arrow = View.extend({
       .line(0, 0, 0, 0)
       .attr({
         stroke: '#222222',
-        strokeWidth: 1,
+        strokeWidth: 0.5,
         strokeLinecap: 'round'
-      });
+      })
+      .addClass('arrow');
       
     this.el = this.svg.node;
     
