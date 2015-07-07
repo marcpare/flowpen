@@ -6,8 +6,8 @@ let Arrow = View.extend({
     
     this.svg = svg.group();
     
-    this.svg
-      .line(0, 0, 0, 10)
+    this.segment = this.svg
+      .line(0, 0, 0, 0)
       .attr({
         stroke: '#222222',
         strokeWidth: 1,
@@ -27,6 +27,10 @@ let Arrow = View.extend({
       .rotate(this.model.angle, 0, 0)
       .toTransformString());
     
+    this.segment.attr({
+      y2: this.model.magnitude
+    });
+      
   }
   
 });
