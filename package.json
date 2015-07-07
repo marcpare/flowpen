@@ -6,6 +6,7 @@
   "dependencies": {
     "ampersand-app": "^1.0.3",
     "ampersand-collection": "^1.4.2",
+    "ampersand-dom-bindings": "^3.5.0",
     "ampersand-router": "^1.0.7",
     "ampersand-state": "^4.4.4",
     "ampersand-view": "^7.2.0",

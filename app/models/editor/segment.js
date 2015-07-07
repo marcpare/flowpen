@@ -8,7 +8,11 @@ let Segment = State.extend({
     x1: 'number',
     y1: 'number',
     x2: 'number',
-    y2: 'number'
+    y2: 'number',
+    spectral: {
+      type: 'boolean',
+      default: false
+    }
   },
   
   initialize () {

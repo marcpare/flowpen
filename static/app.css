@@ -45,6 +45,9 @@ a {
   height: 100%;
   z-index: 101;
 }
+#scale-frame {
+  pointer-events: all;
+}
 #c {
   z-index: 100;
 }

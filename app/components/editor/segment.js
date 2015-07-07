@@ -2,6 +2,12 @@ let View = require('ampersand-view');
  
 let Segment = View.extend({
   
+  bindings: {
+    'model.spectral': {
+      type: 'booleanClass'
+    }
+  },
+  
   create (svg) {
     this.svg = svg
       .line(this.model.x1, this.model.y1, this.model.x2, this.model.y2)
@@ -10,6 +16,7 @@ let Segment = View.extend({
         strokeWidth: 2,
         strokeLinecap: 'round'
       });
+    
     this.el = this.svg.node;
     this.listenTo(this.model, 'change', this.update.bind(this));
   },

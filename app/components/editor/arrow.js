@@ -14,10 +14,18 @@ let Arrow = View.extend({
         strokeLinecap: 'round'
       })
       .addClass('arrow');
-      
+    
+    this.hoverTarget = this.svg
+      .circle(0, 0, 10)
+      .addClass('bound');
+    
     this.el = this.svg.node;
     
     this.update();
+    
+    this.svg.mouseover(function (e) {
+      console.log('got mouseover');
+    });
     
   },
   
