@@ -57,8 +57,6 @@ for (let i = 0; i < N; i++) isFluid[i] = true;
 let inletVelocityField = new Float32Array(N*2);
 for (let i = 0; i < N*2; i++) inletVelocityField[i] = 0.0;
 
-inletVelocityField[2000] = 10.0;
-
 var imageData = ctx.getImageData(0, 0, WIDTH, HEIGHT),
     velocityField0 = new Float32Array(N*2),
     u0x = sampler(velocityField0, WIDTH, HEIGHT, 2, 0),
@@ -348,7 +346,18 @@ function addWall (options) {
       }
     }
   }
+}
 
+function addInlet (segment, thickness, ux, uy) {
+  let x, y;
+  for (x = 0; x < WIDTH; x++) {
+    for (y = 0; y < HEIGHT; y++) {
+      if (Geom.distToSegment(Geom.p(x, y), segment) < thickness) {
+        inletVelocityField[I(x, y, 2, 0)] = ux;
+        inletVelocityField[I(x, y, 2, 1)] = uy;
+      }
+    }
+  } 
 }
 
 
@@ -369,7 +378,8 @@ var requestAnimationFrame = (window.requestAnimationFrame       ||
 
 return {
   resize,
-  addWall
+  addWall,
+  addInlet
 };
 
 };
