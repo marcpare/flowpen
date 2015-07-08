@@ -40,7 +40,7 @@ let Arrow = View.extend({
   },
   
   mousemove (e) {
-    if (this.state.dragging) console.log('dragging');
+    if (this.state.dragging) this.trigger('drag', e);
   },
   
   create (svg) {
