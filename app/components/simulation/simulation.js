@@ -11,10 +11,12 @@ module.exports = AmpersandView.extend({
   
   events: {
     'mousemove #c': 'mouseMove',
+    'mousemove #overlay': 'mouseMove',
     'click #c': 'triggerClick'
   },
   
   mouseMove (e) {
+    console.log('global mousemove');
     Cursor.x = e.offsetX / this.scale;
     Cursor.y = e.offsetY / this.scale;
   },
