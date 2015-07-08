@@ -1,10 +1,24 @@
 let View = require('ampersand-view');
- 
+let Model = require('ampersand-state');
+
+let ArrowViewState = Model.extend({
+  props: {
+    dragging: {
+      type: 'boolean',
+      default: false
+    }
+  }
+});
+
 let Arrow = View.extend({
   
   events: {
     'mouseover': 'mouseover',
-    'mouseout': 'mouseout'
+    'mouseout': 'mouseout',
+    'mousedown': 'dragStart',
+    'mouseup': 'dragEnd',
+    'mousemove': 'mousemove',
+    'mouseleave': 'dragEnd'
   },
   
   mouseover (e) {
@@ -16,8 +30,22 @@ let Arrow = View.extend({
     this.segment.removeClass('hover');
     this.hoverTarget.removeClass('hover');
   },
-    
+  
+  dragStart (e) {
+    this.state.dragging = true;
+  },
+  
+  dragEnd (e) {
+    this.state.dragging = false;
+  },
+  
+  mousemove (e) {
+    if (this.state.dragging) console.log('dragging');
+  },
+  
   create (svg) {
+    
+    this.state = new ArrowViewState();
     
     this.svg = svg.group();
     
