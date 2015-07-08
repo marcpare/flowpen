@@ -65,6 +65,8 @@ let Arrow = View.extend({
     this.el = this.svg.node;
     
     this.update();
+    
+    this.listenTo(this.model, 'change', this.update);
         
   },
   
