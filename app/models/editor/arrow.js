@@ -13,12 +13,13 @@ let Arrow = State.extend({
     
     let {
       start,
-      magnitude
+      magnitude,
+      angle
     } = options;
     
     this.start = start;
     this.magnitude = 30;
-    this.angle = 90.0;
+    this.angle = angle;
     
     this.view = new ArrowView({
       model: this

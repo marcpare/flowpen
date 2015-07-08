@@ -21,8 +21,16 @@ let Segment = State.extend({
     });
   },
   
+  segment () {
+    return new Geom.Line(this.x1, this.y1, this.x2, this.y2);
+  },
+  
   midpoint () {
-    return (new Geom.Line(this.x1, this.y1, this.x2, this.y2)).midpoint();
+    return this.segment().midpoint();
+  },
+  
+  angle () {
+    return this.segment().angle();
   }
   
 });
