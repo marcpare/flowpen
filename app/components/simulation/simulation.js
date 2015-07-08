@@ -16,7 +16,6 @@ module.exports = AmpersandView.extend({
   },
   
   mouseMove (e) {
-    console.log('global mousemove');
     Cursor.x = e.offsetX / this.scale;
     Cursor.y = e.offsetY / this.scale;
   },

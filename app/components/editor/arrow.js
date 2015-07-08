@@ -1,5 +1,6 @@
 let View = require('ampersand-view');
 let Model = require('ampersand-state');
+let Cursor = require('app/models/cursor');
 
 let ArrowViewState = Model.extend({
   props: {
@@ -16,9 +17,7 @@ let Arrow = View.extend({
     'mouseover': 'mouseover',
     'mouseout': 'mouseout',
     'mousedown': 'dragStart',
-    'mouseup': 'dragEnd',
-    'mousemove': 'mousemove',
-    'mouseleave': 'dragEnd'
+    'mouseup': 'dragEnd'
   },
   
   mouseover (e) {
@@ -33,14 +32,16 @@ let Arrow = View.extend({
   
   dragStart (e) {
     this.state.dragging = true;
+    this.listenTo(Cursor, 'change', this.mousemove);
   },
   
   dragEnd (e) {
     this.state.dragging = false;
+    this.stopListening(Cursor, 'change');
   },
   
-  mousemove (e) {
-    if (this.state.dragging) this.trigger('drag', e);
+  mousemove () {
+    if (this.state.dragging) this.trigger('drag');
   },
   
   create (svg) {
