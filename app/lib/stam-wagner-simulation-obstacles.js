@@ -54,6 +54,11 @@ let N = WIDTH*HEIGHT;
 let isFluid = new Array(N);
 for (let i = 0; i < N; i++) isFluid[i] = true;
 
+let inletVelocityField = new Float32Array(N*2);
+for (let i = 0; i < N*2; i++) inletVelocityField[i] = 0.0;
+
+inletVelocityField[2000] = 10.0;
+
 var imageData = ctx.getImageData(0, 0, WIDTH, HEIGHT),
     velocityField0 = new Float32Array(N*2),
     u0x = sampler(velocityField0, WIDTH, HEIGHT, 2, 0),
@@ -85,6 +90,7 @@ function simulate(){
     advect(u0x, u0y, u0x, u1x, step);
     advect(u0x, u0y, u0y, u1y, step);
     addMouseForce(u1x, u1y);
+    addInletVelocity(velocityField1);
     computeDivergence(u1x, u1y, div);
     // needs an even number of iterations
     fastjacobi(p0, p1, div, -1, 0.25, 16);
@@ -122,6 +128,14 @@ function addMouseForce(ux, uy){
       ux(x, y, ux(x, y)-dx*2);
       uy(x, y, uy(x, y)-dy*2);
     }
+}
+
+// v: velocity field
+function addInletVelocity (v) {
+  let i;
+  for (i = 0; i < N*2; i++) {
+    v[i] += inletVelocityField[i];
+  }
 }
 
 function pressureboundary(p){
