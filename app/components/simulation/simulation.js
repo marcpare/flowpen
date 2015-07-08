@@ -11,9 +11,8 @@ module.exports = AmpersandView.extend({
   
   events: {
     'mousemove #c': 'mousemove',
-    'mousemove #overlay': 'mousemove',
-    'mouseout #overlay': 'mouseout',
-    'mouseout #c': 'mouseout',
+    'mousemove #simulation': 'mousemove',
+    'mouseleave #simulation': 'mouseout',
     'click #c': 'triggerClick'
   },
   

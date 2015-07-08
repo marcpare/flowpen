@@ -32,12 +32,14 @@ let Arrow = View.extend({
   
   dragStart (e) {
     this.state.dragging = true;
+    this.hoverTarget.addClass('dragging');
     this.listenTo(Cursor, 'change', this.mousemove);
     this.listenTo(Cursor, 'mouseleave', this.dragEnd);
   },
   
   dragEnd (e) {
     this.state.dragging = false;
+    this.hoverTarget.removeClass('dragging');
     this.stopListening(Cursor, 'change');
     this.stopListening(Cursor, 'mouseleave');
   },
