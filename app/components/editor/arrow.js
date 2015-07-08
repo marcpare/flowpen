@@ -16,8 +16,7 @@ let Arrow = View.extend({
   events: {
     'mouseover': 'mouseover',
     'mouseout': 'mouseout',
-    'mousedown': 'dragStart',
-    'mouseup': 'dragEnd'
+    'mousedown': 'dragStart'
   },
   
   mouseover (e) {
@@ -35,6 +34,7 @@ let Arrow = View.extend({
     this.hoverTarget.addClass('dragging');
     this.listenTo(Cursor, 'change', this.mousemove);
     this.listenTo(Cursor, 'mouseleave', this.dragEnd);
+    this.listenTo(Cursor, 'mouseup', this.dragEnd);
   },
   
   dragEnd (e) {
@@ -42,6 +42,7 @@ let Arrow = View.extend({
     this.hoverTarget.removeClass('dragging');
     this.stopListening(Cursor, 'change');
     this.stopListening(Cursor, 'mouseleave');
+    this.stopListening(Cursor, 'mouseup');
   },
   
   mousemove () {

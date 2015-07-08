@@ -13,12 +13,24 @@ module.exports = AmpersandView.extend({
     'mousemove #c': 'mousemove',
     'mousemove #simulation': 'mousemove',
     'mouseleave #simulation': 'mouseout',
+    'mouseup #simulation': 'mouseup',
     'click #c': 'triggerClick'
   },
   
   mousemove (e) {
-    Cursor.x = e.offsetX / this.scale;
-    Cursor.y = e.offsetY / this.scale;
+    // Doesn't seem to be a way to attach mousemove to just
+    // the simulation or canvas bounds. Instead, attach it
+    // to the containing div, making sure to not pass
+    // coordinate changes when actually outside the
+    // simulation area.
+    if (e.toElement.id !== 'simulation') {
+      Cursor.x = e.offsetX / this.scale;
+      Cursor.y = e.offsetY / this.scale;
+    }
+  },
+  
+  mouseup (e) {
+    Cursor.trigger('mouseup', e);
   },
   
   mouseout (e) { 
