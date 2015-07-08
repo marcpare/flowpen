@@ -33,11 +33,13 @@ let Arrow = View.extend({
   dragStart (e) {
     this.state.dragging = true;
     this.listenTo(Cursor, 'change', this.mousemove);
+    this.listenTo(Cursor, 'mouseleave', this.dragEnd);
   },
   
   dragEnd (e) {
     this.state.dragging = false;
     this.stopListening(Cursor, 'change');
+    this.stopListening(Cursor, 'mouseleave');
   },
   
   mousemove () {

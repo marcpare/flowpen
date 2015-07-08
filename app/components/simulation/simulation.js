@@ -10,14 +10,20 @@ module.exports = AmpersandView.extend({
   template: require('app/components/simulation/simulation.jade'),
   
   events: {
-    'mousemove #c': 'mouseMove',
-    'mousemove #overlay': 'mouseMove',
+    'mousemove #c': 'mousemove',
+    'mousemove #overlay': 'mousemove',
+    'mouseout #overlay': 'mouseout',
+    'mouseout #c': 'mouseout',
     'click #c': 'triggerClick'
   },
   
-  mouseMove (e) {
+  mousemove (e) {
     Cursor.x = e.offsetX / this.scale;
     Cursor.y = e.offsetY / this.scale;
+  },
+  
+  mouseout (e) { 
+    Cursor.trigger('mouseleave', e);
   },
   
   triggerClick (e) {
