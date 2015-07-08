@@ -16,7 +16,7 @@ let Arrow = View.extend({
     this.segment.removeClass('hover');
     this.hoverTarget.removeClass('hover');
   },
-  
+    
   create (svg) {
     
     this.svg = svg.group();
@@ -49,6 +49,10 @@ let Arrow = View.extend({
     
     this.segment.attr({
       y2: this.model.magnitude
+    });
+    
+    this.hoverTarget.attr({
+      cy: this.model.magnitude
     });
       
   }
