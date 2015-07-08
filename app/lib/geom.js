@@ -79,6 +79,18 @@ Line.prototype.append = function (container) {
   return container.line(this.startX, this.startY, this.endX, this.endY);
 };
 
+/* 
+
+Determines which side of the line a point is on.
+
+1 if on "right" side, -1 if on "left" side 
+
+*/
+Line.prototype.direction = function (p) {
+   return Math.sign(this.dy() * (p.x - this.startX) - 
+                    this.dx() * (p.y - this.startY));
+};
+
 module.exports = {
   p,
   dist,

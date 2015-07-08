@@ -22,10 +22,7 @@ let Inlet = View.extend({
   
   dragArrow () {
     
-    let segment = this.model.segment;
-    let direction = segment.dy() * (Cursor.x - segment.x1) - 
-                    segment.dx() * (Cursor.y - segment.y1);
-    direction = Math.sign(direction);
+    let direction = this.model.segment.direction(Geom.p(Cursor.x, Cursor.y));
     
     this.arrow.magnitude = direction * Geom.distToLine(
       Geom.p(Cursor.x, Cursor.y),

@@ -33,12 +33,8 @@ let Segment = State.extend({
     return this.segment().angle();
   },
   
-  dx () {
-    return this.segment().dx();
-  },
-  
-  dy () {
-    return this.segment().dy();
+  direction (p) {
+    return this.segment().direction(p);
   }
   
 });
