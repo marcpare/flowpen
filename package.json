@@ -44,8 +44,7 @@
   },
   "scripts": {
     "test": "node ./test/unit/base.js",
-    "start": "gulp start",
-    "open": "open -a 'Google Chrome' http://flowpen:8000"
+    "start": "gulp start"
   },
   "author": "",
   "license": "ISC"
