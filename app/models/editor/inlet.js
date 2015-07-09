@@ -11,7 +11,7 @@ let Inlet = State.extend({
  
   initialize (options) {
     
-    let {segment: segment} = options;
+    let {segment} = options;
     this.segment = segment;
     
     this.magnitude = 10.0;
