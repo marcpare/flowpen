@@ -17,7 +17,11 @@ let Inlet = State.extend({
       model: this
     });
      
-    Simulation.addInlet(this.segment.segment(), 2, 3, 0);
+    Simulation.addInlet(
+      this.segment.segment(), 
+      2, 
+      -1.0*this.segment.segment().dy(), 
+      this.segment.segment().dx());
   }
   
 });
