@@ -94,7 +94,7 @@ let StartInletAction = () => {
   
   DrawSegmentAction({
     onComplete: segment => {
-            
+      
       EditorObjects.add(new Inlet({
         segment: segment
       }));

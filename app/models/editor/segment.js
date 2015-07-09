@@ -21,6 +21,10 @@ let Segment = State.extend({
     });
   },
   
+  asGeom () {
+    return this.segment();
+  },
+  
   segment () {
     return new Geom.Line(this.x1, this.y1, this.x2, this.y2);
   },
@@ -35,6 +39,14 @@ let Segment = State.extend({
   
   direction (p) {
     return this.segment().direction(p);
+  },
+  
+  dx () {
+    return this.segment().dx();
+  },
+  
+  dy () {
+    return this.segment().dy();
   }
   
 });

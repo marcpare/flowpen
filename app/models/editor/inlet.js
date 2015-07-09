@@ -8,39 +8,40 @@ let Inlet = State.extend({
     segment: 'object',
     magnitude: 'number'
   },
-  
+ 
   initialize (options) {
     
     let {segment: segment} = options;
     this.segment = segment;
     
+    this.magnitude = 1.0;
+    
     this.view = new InletView({
       model: this
     });
     
-    // TODO: api for this can be improved...
-    this.dx = -1.0*this.segment.segment().dy(); 
-    this.dy = this.segment.segment().dx(); 
+    this.dx = this.segment.dy() * -1.0;
+    this.dy = this.segment.dx();
+    
+    this.ux = this.dx * this.magnitude; 
+    this.uy = this.dy * this.magnitude; 
     
     Simulation.addInlet(
-      this.segment.segment(), 
+      this.segment.asGeom(), 
       2, 
-      this.dx*this.view.arrow.magnitude, 
-      this.dy*this.view.arrow.magnitude);
+      this.ux,
+      this.uy);
+    
+    this.on('change:magnitude', this.updateSimulation);
   },
   
   updateSimulation () {
+    
+    let ux = this.dx * this.magnitude; 
+    let uy = this.dy * this.magnitude; 
 
-    let ux = -1.0*this.segment.segment().dy(); 
-    let uy = this.segment.segment().dx(); 
-    
-    let a = this.view.arrow.magnitude;
-    
-    ux *= a;
-    uy *= a;
-    
     Simulation.addInlet(
-      this.segment.segment(),
+      this.segment.asGeom(),
       2,
       ux - this.ux,
       uy - this.uy
