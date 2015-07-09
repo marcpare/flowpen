@@ -18,6 +18,7 @@ let Inlet = View.extend({
     this.arrow.view.create(svg);
     
     this.listenTo(this.arrow.view, 'drag', this.dragArrow);
+    this.listenTo(this.arrow, 'change:magnitude', this.model.updateSimulation.bind(this.model));
   },
   
   dragArrow () {
