@@ -138,29 +138,29 @@ function addInletVelocity (v) {
 
 function pressureboundary(p){
     for(var x = 0; x < WIDTH; x++) {
-        p(x, 0, p(x, 1));
-        p(x, HEIGHT-1, p(x, HEIGHT-2));
+        p(x, 0, 0);
+        p(x, HEIGHT-1, 0);
     }
     for(var y = 0; y < HEIGHT; y++) {
-        p(0, y, p(1, y));
-        p(WIDTH-1, y, p(WIDTH-2, y));
+        p(0, y, 0);
+        p(WIDTH-1, y, 0);
     }
 }
 
 function velocityboundary(ux, uy){
     for(var x = 0; x < WIDTH; x++) {
-        ux(x, 0, -ux(x, 1));
-        uy(x, 0, -uy(x, 1));
+        ux(x, 0, 0);
+        uy(x, 0, 0);
 
-        ux(x, HEIGHT-1, -ux(x, HEIGHT-2));
-        uy(x, HEIGHT-1, -uy(x, HEIGHT-2));
+        ux(x, HEIGHT-1, 0);
+        uy(x, HEIGHT-1, 0);
     }
     for(var y = 0; y < HEIGHT; y++) {
-        ux(0, y, -ux(1, y));
-        uy(0, y, -uy(1, y));
+        ux(0, y, 0);
+        uy(0, y, 0);
 
-        ux(WIDTH-1, y, -ux(WIDTH-2, y));
-        uy(WIDTH-1, y, -uy(WIDTH-2, y));
+        ux(WIDTH-1, y, 0);
+        uy(WIDTH-1, y, 0);
     }
 }
 
