@@ -23,11 +23,9 @@ let Inlet = State.extend({
     this.dx = this.segment.dy() * -1.0;
     this.dy = this.segment.dx();
     
-    this.ux = this.dx * this.magnitude; 
-    this.uy = this.dy * this.magnitude; 
-    
-    console.log(this.ux);
-    
+    this.ux = this.dx * this.magnitude / 100.0; 
+    this.uy = this.dy * this.magnitude / 100.0; 
+        
     Simulation.addInlet(
       this.segment.asGeom(), 
       2, 
@@ -39,10 +37,8 @@ let Inlet = State.extend({
   
   updateSimulation () {
     
-    let ux = this.dx * this.magnitude; 
-    let uy = this.dy * this.magnitude; 
-
-    console.log(ux);
+    let ux = this.dx * this.magnitude / 100.0; 
+    let uy = this.dy * this.magnitude / 100.0; 
 
     Simulation.addInlet(
       this.segment.asGeom(),
