@@ -348,7 +348,13 @@ function addWall (options) {
   }
 }
 
-function addInlet (segment, thickness, ux, uy) {
+function addInlet (options) {
+  let {
+    segment, 
+    thickness, 
+    ux, 
+    uy
+  } = options;
   let x, y;
   for (x = 0; x < WIDTH; x++) {
     for (y = 0; y < HEIGHT; y++) {
