@@ -12,7 +12,8 @@ let Inlet = View.extend({
     
     this.arrow = new Arrow({
       start: this.model.segment.midpoint(),
-      angle: this.model.segment.angle()
+      angle: this.model.segment.angle(),
+      magnitude: this.model.magnitude
     });
         
     this.arrow.view.create(svg);

@@ -18,7 +18,7 @@ let Arrow = State.extend({
     } = options;
     
     this.start = start;
-    this.magnitude = 30;
+    this.magnitude = magnitude;
     this.angle = angle;
     
     this.view = new ArrowView({
