@@ -353,8 +353,8 @@ function addInlet (segment, thickness, ux, uy) {
   for (x = 0; x < WIDTH; x++) {
     for (y = 0; y < HEIGHT; y++) {
       if (Geom.distToSegment(Geom.p(x, y), segment) < thickness) {
-        inletVelocityField[I(x, y, 2, 0)] = ux;
-        inletVelocityField[I(x, y, 2, 1)] = uy;
+        inletVelocityField[I(x, y, 2, 0)] += ux;
+        inletVelocityField[I(x, y, 2, 1)] += uy;
       }
     }
   } 
