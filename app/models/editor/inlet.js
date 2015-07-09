@@ -14,7 +14,7 @@ let Inlet = State.extend({
     let {segment: segment} = options;
     this.segment = segment;
     
-    this.magnitude = 1.0;
+    this.magnitude = 10.0;
     
     this.view = new InletView({
       model: this
