@@ -43,12 +43,12 @@ let Inlet = State.extend({
     let ux = this.dx * this.magnitude; 
     let uy = this.dy * this.magnitude; 
 
-    Simulation.addInlet(
-      this.segment.asGeom(),
-      2,
-      ux - this.ux,
-      uy - this.uy
-    );
+    Simulation.addInlet({ 
+      segment: this.segment.asGeom(),
+      thickness: 2,
+      ux: ux - this.ux,
+      uy: uy - this.uy
+    });
     
     this.ux = ux;
     this.uy = uy;
