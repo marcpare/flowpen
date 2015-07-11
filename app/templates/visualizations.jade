@@ -1,8 +1,0 @@
-<% _.each(data.items, function (item, index) { %>
-  <div class="radio">
-    <label>
-      <input role="visualization" type="radio" name="optionsRadios" id="optionsRadios<%=index%>" value="<%= item.fn %>" <%= h.toggle(data.selected === item.label, 'checked') %> >
-      <%= item.label %>
-    </label>
-  </div>
-<% }) %>
