@@ -8,6 +8,7 @@ let EditorObjects = require('app/models/editor-objects');
 let Model = require('ampersand-state');
 
 let Wall = require('app/models/editor/wall');
+let Inlet = require('app/models/editor/inlet');
 
 let UrlPersistor = Model.extend({
   

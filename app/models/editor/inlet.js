@@ -1,6 +1,7 @@
 let State = require('ampersand-state');
 let InletView = require('app/components/editor/inlet');
 let Simulation = require('app/models/simulation');
+let Segment = require('app/models/editor/segment');
 
 let Inlet = State.extend({
   
@@ -11,11 +12,18 @@ let Inlet = State.extend({
  
   initialize (options) {
     
-    let {segment} = options;
-    this.segment = segment;
+    let {segment, stateString} = options;
     
-    this.magnitude = 10.0;
-    
+    if (stateString) {
+      // bit of a hack, ignore the last element
+      this.segment = new Segment({stateString: stateString});
+      let sp = stateString.split(",");
+      this.magnitude = parseInt(sp[4]);
+    } else {
+      this.segment = segment;
+      this.magnitude = 10.0;
+    }
+        
     this.view = new InletView({
       model: this
     });
