@@ -91,30 +91,26 @@ let DrawSegmentAction = (options) => {
   
 };
 
-let StartInletAction = () => {
+let CreateInletWorkflow = () => {
   
   DrawSegmentAction({
     onComplete: segment => {
-      
       EditorObjects.add(new Inlet({
         segment
       }));
-      
     }
   });
   
 };
 
 
-let StartWallAction = () => {
+let CreateWallWorkflow = () => {
   
   DrawSegmentAction({
     onComplete: segment => {
-      
       EditorObjects.add(new Wall({
         segment
-      }));
-            
+      }));  
     }
   });
   
@@ -123,7 +119,7 @@ let StartWallAction = () => {
 
 module.exports = {
   
-  startWall: StartWallAction,
-  startInlet: StartInletAction
+  startWall: CreateInletWorkflow,
+  startInlet: CreateWallWorkflow
   
 };
