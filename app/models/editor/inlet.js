@@ -40,6 +40,10 @@ let Inlet = State.extend({
   
   updateSimulation () {
     
+    // Don't want to retrigger the change event that
+    // got us here.
+    this.set('magnitude', Math.round(this.magnitude), {silent: true});
+    
     let ux = this.dx * this.magnitude; 
     let uy = this.dy * this.magnitude; 
 
@@ -52,6 +56,10 @@ let Inlet = State.extend({
     
     this.ux = ux;
     this.uy = uy;
+  },
+  
+  urlSerialize () {
+    return `I${this.segment.urlSerializeCoords()},${this.magnitude}`;
   },
   
 });

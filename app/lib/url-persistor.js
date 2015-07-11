@@ -10,7 +10,7 @@ let Model = require('ampersand-state');
 let UrlPersistor = Model.extend({
   
   start () {
-    this.listenTo(EditorObjects, 'add remove', this.handleChange);
+    this.listenTo(EditorObjects, 'add remove change', this.handleChange);
   },
   
   handleChange () {
