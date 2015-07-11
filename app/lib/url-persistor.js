@@ -23,8 +23,9 @@ let UrlPersistor = Model.extend({
     
     if (hash !== this.hash) {
       this.hash = hash;
+      window.history.replaceState(null, "", "?"+this.hash);
     }
-    
+        
   },
   
 });
