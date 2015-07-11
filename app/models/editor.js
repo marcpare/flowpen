@@ -14,6 +14,7 @@ let PendingSegment = require('app/models/pending-segment');
 let EditorObjects = require('app/models/editor-objects');
 let Simulation = require('app/models/simulation');
 let Inlet = require('app/models/editor/inlet');
+let Wall = require('app/models/editor/wall');
 
 let FinishSegmentAction = (options) => {
   
@@ -96,7 +97,7 @@ let StartInletAction = () => {
     onComplete: segment => {
       
       EditorObjects.add(new Inlet({
-        segment: segment
+        segment
       }));
       
     }
@@ -110,17 +111,10 @@ let StartWallAction = () => {
   DrawSegmentAction({
     onComplete: segment => {
       
-      EditorObjects.add(segment);
-    
-      // Add boundaries to the simulation
-      Simulation.addWall({
-        x1: segment.x1,
-        y1: segment.y1,
-        x2: segment.x2,
-        y2: segment.y2,
-        thickness: 2
-      });
-      
+      EditorObjects.add(new Wall({
+        segment
+      }));
+            
     }
   });
   
