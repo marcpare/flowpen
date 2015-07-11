@@ -4,6 +4,7 @@ let Cursor = require('app/models/cursor');
 let Simulation = require('app/models/simulation');
 let EditorObjects = require('app/models/editor-objects');
 let Bus = require('app/lib/bus');
+let UrlPersistor = require('app/lib/url-persistor');
 let StamWagnerSimulation = require('app/lib/stam-wagner-simulation-obstacles');
 
 module.exports = AmpersandView.extend({
@@ -45,6 +46,7 @@ module.exports = AmpersandView.extend({
   },
   
   initialize (options) {
+    UrlPersistor.start();
     this.simulationOptions = options.simulationOptions;
     
     WindowWatcher.on('resize', this.recenter.bind(this));
