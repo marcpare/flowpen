@@ -28,6 +28,10 @@ let Wall = State.extend({
     
   },
   
+  urlSerialize () {
+    return `W${this.segment.urlSerializeCoords()}`;
+  },
+  
 });
 
 module.exports = Wall;

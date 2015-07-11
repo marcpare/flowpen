@@ -14,7 +14,14 @@ let UrlPersistor = Model.extend({
   },
   
   handleChange () {
-    console.log('going to update the url');
+    
+    console.log('serializing');
+    EditorObjects.map(o => {
+      if (o.urlSerialize) {
+        console.log(o.urlSerialize());
+      }
+    });
+    
   },
   
 });

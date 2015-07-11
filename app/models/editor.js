@@ -27,7 +27,9 @@ let FinishSegmentAction = (options) => {
     Cursor.pointer = 'none';
     
     // create the Wall object
-    let segment = PendingSegment.finish(e.x, e.y);
+    let segment = PendingSegment.finish(
+      Math.round(e.x), 
+      Math.round(e.y));
     
     options.onComplete(segment);
     
@@ -57,7 +59,9 @@ let StartSegmentAction = (options) => {
   let onCanvasClick = e => {
 
     // mark the starting point
-    PendingSegment.start(e.x, e.y);
+    PendingSegment.start(
+      Math.round(e.x), 
+      Math.round(e.y));
     
     // transition to finishSegment state
     FinishSegmentAction(options);
@@ -118,8 +122,6 @@ let CreateWallWorkflow = () => {
 
 
 module.exports = {
-  
-  startWall: CreateInletWorkflow,
-  startInlet: CreateWallWorkflow
-  
+  startWall: CreateWallWorkflow,
+  startInlet: CreateInletWorkflow
 };

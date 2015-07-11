@@ -21,6 +21,11 @@ let Segment = State.extend({
     });
   },
   
+  
+  urlSerializeCoords () {
+    return `${this.x1},${this.y1},${this.x2},${this.y2}`;
+  },
+  
   asGeom () {
     return this.segment();
   },
@@ -47,7 +52,7 @@ let Segment = State.extend({
   
   dy () {
     return this.segment().dy();
-  }
+  },
   
 });
 
