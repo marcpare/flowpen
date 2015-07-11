@@ -46,7 +46,6 @@ module.exports = AmpersandView.extend({
   },
   
   initialize (options) {
-    UrlPersistor.start();
     this.simulationOptions = options.simulationOptions;
     
     WindowWatcher.on('resize', this.recenter.bind(this));
@@ -58,7 +57,7 @@ module.exports = AmpersandView.extend({
   startSimulation () {
     Simulation.initialize(StamWagnerSimulation, this.query('#c'), this.simulationOptions);
     this.simulation = Simulation;
-    this.recenter();
+    this.recenter();    
   },
   
   recenter () {
@@ -155,13 +154,16 @@ module.exports = AmpersandView.extend({
     // is attached to the dom before kicking
     // off the simulation
     window.setTimeout(this.startSimulation.bind(this), 300);
+    window.setTimeout(this.initializeSvg.bind(this), 300);
+    // Major hack! Needs the two previous inits to finish first
+    window.setTimeout(() => {
+      UrlPersistor.start();
+    }, 600);
     
     this.elCanvas = this.query('#c');
     this.elOverlay = this.query('#overlay');
     this.elScaleFrame = this.query('#scale-frame');
-    
-    window.setTimeout(this.initializeSvg.bind(this), 300);
-    
+        
     return this;
   }
 });

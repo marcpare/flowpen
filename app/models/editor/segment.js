@@ -15,7 +15,18 @@ let Segment = State.extend({
     }
   },
   
-  initialize () {
+  initialize (options) {
+    
+    let {stateString} = options;
+    
+    if (stateString) {
+      let sp = stateString.split(",");
+      this.x1 = parseInt(sp[0]);
+      this.y1 = parseInt(sp[1]);
+      this.x2 = parseInt(sp[2]);
+      this.y2 = parseInt(sp[3]);
+    }
+    
     this.view = new SegmentView({
       model: this
     });

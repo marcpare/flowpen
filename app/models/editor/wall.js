@@ -1,6 +1,7 @@
 let State = require('ampersand-state');
 let Simulation = require('app/models/simulation');
 let SegmentView = require('app/components/editor/segment');
+let Segment = require('app/models/editor/segment');
 
 let Wall = State.extend({
   
@@ -10,19 +11,24 @@ let Wall = State.extend({
  
   initialize (options) {
     
-    let {segment} = options;
-    this.segment = segment;
+    let {segment, stateString} = options;
     
+    if (stateString) {
+      this.segment = new Segment({stateString: stateString});
+    } else {
+      this.segment = segment;
+    }
+        
     this.view = new SegmentView({
-      model: segment
+      model: this.segment
     });
     
     // Add boundaries to the simulation
     Simulation.addWall({
-      x1: segment.x1,
-      y1: segment.y1,
-      x2: segment.x2,
-      y2: segment.y2,
+      x1: this.segment.x1,
+      y1: this.segment.y1,
+      x2: this.segment.x2,
+      y2: this.segment.y2,
       thickness: 2
     });
     
