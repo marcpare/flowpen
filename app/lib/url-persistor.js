@@ -10,7 +10,7 @@ let Model = require('ampersand-state');
 let UrlPersistor = Model.extend({
   
   start () {
-    this.hash = '';
+    this.stateString = '';
     this.listenTo(EditorObjects, 'add remove change', this.handleChange);
   },
   
@@ -19,11 +19,11 @@ let UrlPersistor = Model.extend({
     let strings = EditorObjects.map(o => {
       return o.urlSerialize ? o.urlSerialize() : '';
     });
-    let hash = strings.join('');
+    let stateString = strings.join('');
     
-    if (hash !== this.hash) {
-      this.hash = hash;
-      window.history.replaceState(null, "", "?"+this.hash);
+    if (stateString !== this.stateString) {
+      this.stateString = stateString;
+      window.history.replaceState(null, "", "?"+this.stateString);
     }
         
   },
