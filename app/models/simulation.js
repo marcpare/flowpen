@@ -1,4 +1,5 @@
 var _ = require('underscore');
+var EditorObjects = require('app/models/editor-objects');
 
 module.exports = {
   
@@ -7,6 +8,16 @@ module.exports = {
     
     // Copy the return methods here
     _.extend(this, simulation);
-  }
+  },
+  
+  clear () {
+    
+    EditorObjects.forEach(o => {
+      o.destroy();
+    });
+    
+    EditorObjects.reset();
+    
+  },
   
 };

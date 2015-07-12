@@ -20,6 +20,10 @@ let Inlet = View.extend({
     
     this.listenTo(this.arrow.view, 'drag', this.dragArrow);
     this.listenTo(this.arrow, 'change:magnitude', this.updateMagnitude);
+    this.listenTo(this, 'remove', this.cleanup);
+    
+    this.svg = svg;
+    this.el = this.svg.node;
   },
   
   updateMagnitude () {
@@ -35,7 +39,7 @@ let Inlet = View.extend({
       this.model.segment.segment()
     );
         
-  }
+  },
    
 });
 

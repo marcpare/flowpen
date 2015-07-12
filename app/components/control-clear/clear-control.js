@@ -1,4 +1,5 @@
 let View = require('ampersand-view');
+let Simulation = require('app/models/simulation');
 
 module.exports = View.extend({
   template: require('app/components/control-clear/clear-control.jade'),
@@ -8,7 +9,7 @@ module.exports = View.extend({
   },
   
   onClick () {
-    console.log("I am going to clear....");
+    Simulation.clear();
   },
   
   initialize () {

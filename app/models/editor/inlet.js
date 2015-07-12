@@ -70,6 +70,17 @@ let Inlet = State.extend({
     return `I${this.segment.urlSerializeCoords()},${this.magnitude}`;
   },
   
+  destroy () {
+    
+    console.log('trying to destroy inlet');
+    
+    // remove view
+    this.view.remove();
+    
+    // remove from simulation
+    
+  },
+  
 });
 
 module.exports = Inlet;

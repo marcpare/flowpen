@@ -52,6 +52,7 @@ module.exports = AmpersandView.extend({
     this.listenTo(Cursor, 'change', this.updateCursor.bind(this));
     this.listenTo(EditorObjects, 'add', this.addObject.bind(this));
     this.listenTo(EditorObjects, 'remove', this.removeObject.bind(this));
+    this.listenTo(EditorObjects, 'reset', this.resetObjects.bind(this));
   },
   
   startSimulation () {
@@ -143,10 +144,25 @@ module.exports = AmpersandView.extend({
   
   removeObject (obj) {
     
+    console.log('trying to remove...');
+    
     obj.view.remove();
     
   },
   
+  resetObjects (objs) {
+    
+    objs.forEach(o => {
+      
+      // delete svg
+      
+      // remove from simulation
+      
+      console.log(o);
+    });
+    
+  },
+    
   render () {
     this.renderWithTemplate(this);
     
