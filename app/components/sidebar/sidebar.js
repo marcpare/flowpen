@@ -1,6 +1,7 @@
 let AmpersandView = require('ampersand-view');
 let WallToolView = require('app/components/tool-wall/tool-wall');
 let InletToolView = require('app/components/tool-inlet/tool-inlet');
+let ClearControlView = require('app/components/control-clear/clear-control');
 
 module.exports = AmpersandView.extend({
   template: require('app/components/sidebar/sidebar.jade'),
@@ -14,6 +15,11 @@ module.exports = AmpersandView.extend({
     inletTool: {
       container: '#inlet-tool-container',
       constructor: InletToolView
+    },
+    
+    clearControl: {
+      container: '#clear-control-container',
+      constructor: ClearControlView
     }
   }
 });
