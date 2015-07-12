@@ -148,8 +148,6 @@ module.exports = AmpersandView.extend({
   
   removeObject (obj) {
     
-    console.log('trying to remove...');
-    
     obj.view.remove();
     
   },

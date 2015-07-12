@@ -24,6 +24,8 @@ let Inlet = View.extend({
     this.listenTo(this.arrow, 'change:magnitude', this.updateMagnitude);
         
     this.listenTo(this, 'remove', this.cleanup);
+    
+    this.render();
   },
     
   updateMagnitude () {
@@ -42,7 +44,12 @@ let Inlet = View.extend({
   },
   
   cleanup () {
-    console.log('cleaning up the inlet view');
+    this.arrow.view.remove();
+    this.model.segment.view.remove();
+  },
+  
+  render () {
+    return this;
   },
    
 });
