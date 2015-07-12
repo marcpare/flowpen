@@ -72,12 +72,14 @@ let Inlet = State.extend({
   
   destroy () {
     
-    console.log('trying to destroy inlet');
-    
-    // remove view
     this.view.remove();
     
-    // remove from simulation
+    Simulation.addInlet({ 
+      segment: this.segment.asGeom(),
+      thickness: 2,
+      ux: -this.ux,
+      uy: -this.uy
+    });
     
   },
   
