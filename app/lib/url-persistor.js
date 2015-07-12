@@ -18,6 +18,7 @@ let UrlPersistor = Model.extend({
     // Quick and dirty!
     if (!this.loaded) {
       let stateString = window.location.search.slice(1);
+      this.stateString = stateString;
       let stateStrings = stateString.split('|');
       stateStrings.forEach(s => {
         let c = s[0];
@@ -31,16 +32,14 @@ let UrlPersistor = Model.extend({
       });
       
       this.loaded = true;
-    }
-    
-    
-    
-    this.stateString = '';
-    this.listenTo(EditorObjects, 'add remove change', this.handleChange);
+    } else {
+      this.stateString = '';
+    }    
+
+    this.listenTo(EditorObjects, 'add remove change reset', this.handleChange);
   },
   
   handleChange () {
-    
     let strings = EditorObjects.map(o => {
       return o.urlSerialize ? o.urlSerialize() : '';
     });
@@ -49,8 +48,7 @@ let UrlPersistor = Model.extend({
     if (stateString !== this.stateString) {
       this.stateString = stateString;
       window.history.replaceState(null, "", "?"+this.stateString);
-    }
-        
+    }    
   },
   
 });
