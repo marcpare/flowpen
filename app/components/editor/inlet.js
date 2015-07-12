@@ -6,9 +6,9 @@ let Geom = require('app/lib/geom');
  
 let Inlet = View.extend({
   
-  create (svg) {
-    
-    this.svg = svg.group();
+  initialize (options) {
+    let {svg} = options;
+    this.svg = svg;
     
     this.model.segment.view.create(this.svg);
     
@@ -22,11 +22,10 @@ let Inlet = View.extend({
     
     this.listenTo(this.arrow.view, 'drag', this.dragArrow);
     this.listenTo(this.arrow, 'change:magnitude', this.updateMagnitude);
+        
     this.listenTo(this, 'remove', this.cleanup);
-    
-    this.el = this.svg.node;
   },
-  
+    
   updateMagnitude () {
     this.model.magnitude = this.arrow.magnitude;
   },
@@ -40,6 +39,10 @@ let Inlet = View.extend({
       this.model.segment.segment()
     );
         
+  },
+  
+  cleanup () {
+    console.log('cleaning up the inlet view');
   },
    
 });

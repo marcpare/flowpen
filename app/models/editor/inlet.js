@@ -23,11 +23,7 @@ let Inlet = State.extend({
       this.segment = segment;
       this.magnitude = 10.0;
     }
-        
-    this.view = new InletView({
-      model: this
-    });
-    
+            
     this.scale = 200.0;
     
     this.dx = this.segment.dy() * -1.0 / this.scale;
@@ -44,6 +40,15 @@ let Inlet = State.extend({
     });
     
     this.on('change:magnitude', this.updateSimulation);
+  },
+  
+  createView (svg) {
+    this.view = new InletView({
+      svg,
+      el: svg.node,
+      model: this,
+    });
+    return this.view;
   },
   
   updateSimulation () {
@@ -71,6 +76,8 @@ let Inlet = State.extend({
   },
   
   destroy () {
+    
+    console.log('destroying model');
     
     this.view.remove();
     

@@ -16,7 +16,7 @@ module.exports = {
       o.destroy();
     });
     
-    // EditorObjects.reset();
+    EditorObjects.reset();
     
   },
   

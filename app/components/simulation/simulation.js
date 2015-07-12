@@ -138,7 +138,11 @@ module.exports = AmpersandView.extend({
   
   addObject (obj) {
     
-    obj.view.create(this.svgOverlay);
+    if (obj.createView) {
+      obj.createView(this.svgOverlay.group());    
+    } else {
+      obj.view.create(this.svgOverlay);
+    }
         
   },
   
