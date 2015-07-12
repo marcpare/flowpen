@@ -8,7 +8,9 @@ let Inlet = View.extend({
   
   create (svg) {
     
-    this.model.segment.view.create(svg);
+    this.svg = svg.group();
+    
+    this.model.segment.view.create(this.svg);
     
     this.arrow = new Arrow({
       start: this.model.segment.midpoint(),
@@ -22,7 +24,6 @@ let Inlet = View.extend({
     this.listenTo(this.arrow, 'change:magnitude', this.updateMagnitude);
     this.listenTo(this, 'remove', this.cleanup);
     
-    this.svg = svg;
     this.el = this.svg.node;
   },
   
