@@ -76,9 +76,7 @@ let Inlet = State.extend({
   },
   
   destroy () {
-    
-    console.log('destroying model');
-    
+        
     this.view.remove();
     
     Simulation.addInlet({ 

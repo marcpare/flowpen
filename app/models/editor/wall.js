@@ -38,6 +38,12 @@ let Wall = State.extend({
     return `W${this.segment.urlSerializeCoords()}`;
   },
   
+  destroy () {
+        
+    this.view.remove();
+    
+  },
+  
 });
 
 module.exports = Wall;
