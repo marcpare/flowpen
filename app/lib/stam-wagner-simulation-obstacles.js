@@ -328,15 +328,16 @@ function draw(ux, uy, p){
 }
 
 function addWall (options) {
-  let x, y, dist, line, thickness;
+  let x, y, dist, line, thickness, fluidState;
   thickness = options.thickness;
+  fluidState = options.remove || false;
   line = new Geom.Line(options.x1, options.y1, options.x2, options.y2);
   
   for (x = 0; x < WIDTH; x++) {
     for (y = 0; y < HEIGHT; y++) {
       dist = Geom.distToSegment(Geom.p(x, y), line);      
       if (dist < thickness) {
-        isFluid[I(x, y)] = false;
+        isFluid[I(x, y)] = fluidState;
         u0x(x, y, 0);
         u0y(x, y, 0);
         p0(x, y, 0);

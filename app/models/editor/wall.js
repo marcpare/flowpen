@@ -42,6 +42,15 @@ let Wall = State.extend({
         
     this.view.remove();
     
+    Simulation.addWall({
+      x1: this.segment.x1,
+      y1: this.segment.y1,
+      x2: this.segment.x2,
+      y2: this.segment.y2,
+      thickness: 2,
+      remove: true
+    });
+    
   },
   
 });
