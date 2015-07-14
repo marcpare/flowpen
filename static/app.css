@@ -167,10 +167,11 @@ a {
   margin: 20px 0;
 }
 .btn {
+  cursor: pointer;
   border-radius: 3px; 
   padding: 10px 15px;
   height: 40px;
-  margin-right: 15px;
+  margin-right: 5px;
   background: #616161;
 }
 .btn-special {
