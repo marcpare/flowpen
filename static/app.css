@@ -5,6 +5,7 @@ z-index
 100: sim-container
 101: overlay
 102: snacks
+200: modal
 */
 
 /* Global styles */
@@ -186,4 +187,21 @@ a {
   display: inline-block;
   margin-right: 5px;
   margin-bottom: -3px;
+}
+
+/* modal */
+.modal-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.modal-contents {
+  background: white;
+  max-width: 50%;
 }
