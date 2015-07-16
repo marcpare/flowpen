@@ -208,3 +208,13 @@ a {
 .icon-twitter {
   fill: #55acee;
 }
+.icon-link {
+  display: inline-flex;
+  fill: white;
+  border-radius: 50%;
+  background-color: #757575;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+}
