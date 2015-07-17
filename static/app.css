@@ -167,11 +167,14 @@ a {
 .bottom-buttons {
   margin: 20px 0;
 }
+.bottom-buttons .btn {
+  margin-bottom: 10px;
+}
 .btn {
+  fill: white;
   cursor: pointer;
   border-radius: 3px; 
   padding: 10px 15px;
-  height: 40px;
   margin-right: 5px;
   background: #616161;
 }
@@ -204,17 +207,4 @@ a {
 .modal-contents {
   background: white;
   max-width: 50%;
-}
-.icon-twitter {
-  fill: #55acee;
-}
-.icon-link {
-  display: inline-flex;
-  fill: white;
-  border-radius: 50%;
-  background-color: #757575;
-  align-items: center;
-  justify-content: center;
-  width: 40px;
-  height: 40px;
 }
