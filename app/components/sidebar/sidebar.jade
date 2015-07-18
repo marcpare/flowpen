@@ -15,14 +15,11 @@ div#sidebar
       div.btn(data-hook="share")
         span Create shareable link
       
-    div
-      div.quiet-header Contact 
-      div
-        a 
-          i.fa.fa-envelope-o
-          |  marc@smallredtile.com
-    
-      div
-        a
-          i.fa.fa-twitter
-          |  @flowpen
+    div.contact-container
+      div.quiet-header.contact-header Contact 
+      div.contact-item
+        i.fa.fa-envelope-o
+        a(href="mailto:marc@smallredtile.com") marc@smallredtile.com
+      div.contact-item
+        i.fa.fa-twitter
+        a(href="https://twitter.com/marc_pare") @marc_pare

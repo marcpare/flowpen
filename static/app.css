@@ -160,6 +160,13 @@ a {
   bottom: 0;
   left: 0;
   padding: 15px;
+  background: #272727;
+  margin: 10px;
+  border-radius: 3px;
+  color: white;
+}
+#sidebar-bottom a {
+  color: white;
 }
 .tagline {
   margin: 20px 0;
@@ -190,6 +197,16 @@ a {
   display: inline-block;
   margin-right: 5px;
   margin-bottom: -3px;
+}
+.contact-header {
+  margin-bottom: 10px;
+}
+.contact-item {
+  margin-bottom: 5px;
+}
+.contact-item i {
+  display: inline-block;
+  margin-right: 3px;
 }
 
 /* modal */
