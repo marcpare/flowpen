@@ -39,7 +39,7 @@ gulp.task('lint', function () {
 });
 
 gulp.task('copy-static', function () {
-  return gulp.src('static/*', {base:'static/'})
+  return gulp.src('static/**/*', {base:'static/'})
     .pipe(gulp.dest('./dist/'));
 });
 

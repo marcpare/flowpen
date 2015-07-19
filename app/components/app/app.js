@@ -20,7 +20,8 @@ module.exports = AmpersandView.extend({
           simulationOptions: {
             rows: 128,
             columns: 256,
-            debugBoundaries: true
+            debugBoundaries: true,
+            initialModel: this.initialModel,
           }
         });
       }
@@ -30,5 +31,11 @@ module.exports = AmpersandView.extend({
       container: '#snack-container',
       constructor: SnackView
     }
-  }
+  },
+  
+  initialize (options) {
+    let {initialModel} = options;
+    this.initialModel = initialModel;
+  },
+  
 });

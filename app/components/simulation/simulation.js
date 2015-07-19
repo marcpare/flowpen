@@ -47,7 +47,7 @@ module.exports = AmpersandView.extend({
   
   initialize (options) {
     this.simulationOptions = options.simulationOptions;
-    
+        
     WindowWatcher.on('resize', this.recenter.bind(this));
     this.listenTo(Cursor, 'change', this.updateCursor.bind(this));
     this.listenTo(EditorObjects, 'add', this.addObject.bind(this));
@@ -175,7 +175,7 @@ module.exports = AmpersandView.extend({
     window.setTimeout(this.initializeSvg.bind(this), 300);
     // Major hack! Needs the two previous inits to finish first
     window.setTimeout(() => {
-      UrlPersistor.start();
+      UrlPersistor.start(this.simulationOptions.initialModel);
     }, 600);
     
     this.elCanvas = this.query('#c');
