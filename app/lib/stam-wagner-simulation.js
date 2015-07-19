@@ -301,7 +301,8 @@ var requestAnimationFrame = (window.requestAnimationFrame       ||
 })();
 
 return {
-  resize
+  resize,
+  loop: requestAnimationFrame
 };
 
 };

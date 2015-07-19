@@ -377,7 +377,12 @@ var requestAnimationFrame = (window.requestAnimationFrame       ||
                 window.setTimeout(callback, 1000 / 60);
               });
 
+let running = true;
+
 (function animate(){
+  
+  if (!running) return;
+  
     simulate();
     draw(u0x, u0y, p0);
     requestAnimationFrame(animate);
@@ -386,7 +391,10 @@ var requestAnimationFrame = (window.requestAnimationFrame       ||
 return {
   resize,
   addWall,
-  addInlet
+  addInlet,
+  stop () {
+    running = false;
+  }
 };
 
 };

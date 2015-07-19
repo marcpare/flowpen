@@ -53,6 +53,14 @@ module.exports = AmpersandView.extend({
     this.listenTo(EditorObjects, 'add', this.addObject.bind(this));
     this.listenTo(EditorObjects, 'remove', this.removeObject.bind(this));
     this.listenTo(EditorObjects, 'reset', this.resetObjects.bind(this));
+     
+    this.listenTo(this, 'remove', this.cleanup);
+  },
+  
+  cleanup () {
+    if (this.simulation) {
+      this.simulation.stop();
+    }
   },
   
   startSimulation () {
