@@ -16,6 +16,14 @@ let Simulation = require('app/models/simulation');
 let Inlet = require('app/models/editor/inlet');
 let Wall = require('app/models/editor/wall');
 
+let props = {
+  
+  // toggles showing a message after the user creates their first object
+  // that the model state is saved in the url.
+  showUrlSnack: true
+  
+};
+
 let FinishSegmentAction = (options) => {
   
   Snack.message = 'Choose ending point';
@@ -95,6 +103,22 @@ let DrawSegmentAction = (options) => {
   
 };
 
+let UrlSnackAction = () => {
+  
+  if (props.showUrlSnack) {
+    props.showUrlSnack = false;
+    
+    Snack.visible = true;
+    Snack.message = 'Your model is automatically saved in the URL (try refreshing)';
+    Snack.action = 'Got it';
+    Snack.actionHandler = () => {
+      Snack.visible = false;
+    };
+    
+  }
+  
+};
+
 let CreateInletWorkflow = () => {
   
   DrawSegmentAction({
@@ -102,6 +126,8 @@ let CreateInletWorkflow = () => {
       EditorObjects.add(new Inlet({
         segment
       }));
+      
+      UrlSnackAction();
     }
   });
   
@@ -115,6 +141,8 @@ let CreateWallWorkflow = () => {
       EditorObjects.add(new Wall({
         segment
       }));  
+      
+      UrlSnackAction();
     }
   });
   
