@@ -6,7 +6,7 @@ Flowpen
 
 An experiment in a user interface for exploring fluid flow.
 
-See it at: [flowpen.io](www.flowpen.io)
+See it at: [flowpen.io](http://www.flowpen.io)
 
 The solver is a fork of [Jonas Wagner's implementation](http://29a.ch/sandbox/2012/fluidcanvas/) of Jos Stam's Stable Fluids. 
 
