@@ -1,5 +1,5 @@
 
-![Splash Image](https://raw.githubusercontent.com/marcpare/flowpen/e2a34cd951906c76387c1754290db35cae8c6448/splash.png)
+![Splash Image](https://raw.githubusercontent.com/marcpare/flowpen/master/splash.png)
 
 Flowpen
 ===
