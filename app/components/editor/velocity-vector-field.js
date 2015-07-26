@@ -20,20 +20,37 @@ module.exports = View.extend({
     //
     // })
       
-    for (let x = 1; x < Simulation.width; x+=3) {
-      for (let y = 1; y < Simulation.height; y+=3) {
-        this.svg
+    class VelocityVector {
+      constructor (svg, x, y) {
+        this.x = x;
+        this.y = y;
+        this.el = svg
           .line(x, y, x+1, y+1)
           .attr({
             stroke: '#bada55',
             strokeWidth: 0.1,
             strokeLinecap: 'round'
           });
-      
+      }
+    }
+    
+    let vectors = [];
+    
+    for (let x = 1; x < Simulation.width; x+=3) {
+      for (let y = 1; y < Simulation.height; y+=3) {
+        vectors.push(new VelocityVector(this.svg, x, y));
       }
     }
     
     this.el = this.svg.node;
+    
+    // Kick off an update loop
+    window.setInterval(() => {
+      
+      
+      
+    }, 500);
+    
   },  
    
 });
