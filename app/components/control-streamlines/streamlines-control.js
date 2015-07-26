@@ -1,5 +1,6 @@
 let View = require('ampersand-view');
-let Simulation = require('app/models/simulation');
+let VelocityVectorField = require('app/models/editor/velocity-vector-field');
+let EditorObjects = require('app/models/editor-objects');
 
 module.exports = View.extend({
   template: require('app/components/control-streamlines/streamlines-control.jade'),
@@ -9,17 +10,7 @@ module.exports = View.extend({
   },
   
   onClick () {
-    
-    // // add a bunch of small lines to the simulation, centered on each cell
-    // for (let x = 0; i < width; i++) {
-    //   for (let y = 0; k < height; k++) {
-    //     EditorObjects.add(new Streamline({
-    //       x,
-    //       y
-    //     });
-    //   }
-    // }
-    
+    EditorObjects.add(new VelocityVectorField());      
   },
   
   initialize () {

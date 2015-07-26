@@ -6,6 +6,9 @@ module.exports = {
   initialize (SimModule, el, options) {
     let simulation = SimModule(el, options);
     
+    this.height = options.rows;
+    this.width = options.columns;
+    
     // Copy the return methods here
     _.extend(this, simulation);
   },
