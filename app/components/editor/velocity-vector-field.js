@@ -31,7 +31,16 @@ module.exports = View.extend({
             strokeWidth: 0.1,
             strokeLinecap: 'round'
           });
-      }
+      },
+      
+      update (velocity) {
+        
+        let angle = Geom.angle(velocity.x, velocity.y);
+        this.angle = angle.
+        this.updateTransform();
+        
+      },
+      
     }
     
     let vectors = [];
@@ -47,7 +56,11 @@ module.exports = View.extend({
     // Kick off an update loop
     window.setInterval(() => {
       
-      
+      vectors.forEach(vector => {
+        
+        vector.update(Simulation.velocityAt(vector.x, vector.y));
+        
+      });
       
     }, 500);
     
