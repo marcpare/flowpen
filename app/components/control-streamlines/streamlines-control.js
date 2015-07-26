@@ -9,6 +9,17 @@ module.exports = View.extend({
   },
   
   onClick () {
+    
+    // // add a bunch of small lines to the simulation, centered on each cell
+    // for (let x = 0; i < width; i++) {
+    //   for (let y = 0; k < height; k++) {
+    //     EditorObjects.add(new Streamline({
+    //       x,
+    //       y
+    //     });
+    //   }
+    // }
+    
   },
   
   initialize () {
