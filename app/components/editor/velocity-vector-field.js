@@ -43,11 +43,7 @@ module.exports = View.extend({
       update () {
         
         this.el.attr("x2", Math.random());
-        
-        // let angle = Geom.angle(velocity.x, velocity.y);
-        // this.angle = angle.
-        // this.updateTransform();
-        
+             
       }
       
     }

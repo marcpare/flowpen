@@ -325,6 +325,15 @@ function draw(ux, uy, p){
         }
     }
     ctx.putImageData(imageData, 0, 0);
+    
+    // Draw some lines
+    ctx.strokeStyle = '#000';
+    ctx.beginPath();
+    ctx.lineWidth = 1.0;
+    ctx.moveTo(0, 0);
+    ctx.lineTo(10, 10);
+    ctx.stroke();
+    ctx.closePath();
 }
 
 function addWall (options) {
