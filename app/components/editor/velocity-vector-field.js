@@ -40,6 +40,7 @@ module.exports = View.extend({
         
         this.el.transform(new Snap.Matrix()
           .translate(this.x, this.y)
+          .rotate(Math.random()*360, 0, 0)
           .toTransformString());
         
         // let angle = Geom.angle(velocity.x, velocity.y);
