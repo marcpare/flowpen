@@ -42,7 +42,13 @@ module.exports = View.extend({
       
       update () {
         
-        this.el.attr("x2", Math.random());
+        // this.el.attr("x2", Math.random());
+        
+      this.el.transform(new Snap.Matrix()
+        .translate(this.x, this.y)
+        .rotate(Math.random()*360, 0, 0)
+        .toTransformString());
+        
              
       }
       
