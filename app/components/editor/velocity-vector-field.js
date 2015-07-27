@@ -31,6 +31,10 @@ module.exports = View.extend({
             strokeWidth: 0.1,
             strokeLinecap: 'round'
           });
+          
+        this.el.transform(new Snap.Matrix()
+          .translate(this.x, this.y)
+          .toTransformString());
         
         this.update();
       }
@@ -38,10 +42,7 @@ module.exports = View.extend({
       
       update () {
         
-        this.el.transform(new Snap.Matrix()
-          .translate(this.x, this.y)
-          .rotate(Math.random()*360, 0, 0)
-          .toTransformString());
+        this.el.attr("x2", Math.random());
         
         // let angle = Geom.angle(velocity.x, velocity.y);
         // this.angle = angle.
@@ -65,7 +66,9 @@ module.exports = View.extend({
     window.setInterval(() => {
       
       vectors.forEach(vector => {
-        console.log('updating;');
+        
+        vector.update();
+        // console.log('updating;');
         // vector.update(Simulation.velocityAt(vector.x, vector.y));
         
       });
