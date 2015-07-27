@@ -25,20 +25,26 @@ module.exports = View.extend({
         this.x = x;
         this.y = y;
         this.el = svg
-          .line(x, y, x+1, y+1)
+          .line(0, 0, 1, 1)
           .attr({
             stroke: '#bada55',
             strokeWidth: 0.1,
             strokeLinecap: 'round'
           });
+        
+        this.update();
       }
       
       
-      update (velocity) {
+      update () {
         
-        let angle = Geom.angle(velocity.x, velocity.y);
-        this.angle = angle.
-        this.updateTransform();
+        this.el.transform(new Snap.Matrix()
+          .translate(this.x, this.y)
+          .toTransformString());
+        
+        // let angle = Geom.angle(velocity.x, velocity.y);
+        // this.angle = angle.
+        // this.updateTransform();
         
       }
       
