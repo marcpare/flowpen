@@ -31,7 +31,8 @@ module.exports = View.extend({
             strokeWidth: 0.1,
             strokeLinecap: 'round'
           });
-      },
+      }
+      
       
       update (velocity) {
         
@@ -39,7 +40,7 @@ module.exports = View.extend({
         this.angle = angle.
         this.updateTransform();
         
-      },
+      }
       
     }
     
@@ -53,12 +54,12 @@ module.exports = View.extend({
     
     this.el = this.svg.node;
     
-    // Kick off an update loop
+    // Kick off an update loo    
     window.setInterval(() => {
       
       vectors.forEach(vector => {
-        
-        vector.update(Simulation.velocityAt(vector.x, vector.y));
+        console.log('updating;');
+        // vector.update(Simulation.velocityAt(vector.x, vector.y));
         
       });
       
