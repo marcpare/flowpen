@@ -42,6 +42,7 @@ module.exports = View.extend({
       
       update () {
         
+        var vel = Simulation.velocityAt(this.x, this.y);
         this.el.attr("x2", Math.random());
              
       }
@@ -58,17 +59,11 @@ module.exports = View.extend({
     
     this.el = this.svg.node;
     
-    // Kick off an update loo    
+    // Kick off an update loop    
     window.setInterval(() => {
-      
       vectors.forEach(vector => {
-        
-        vector.update();
-        // console.log('updating;');
-        // vector.update(Simulation.velocityAt(vector.x, vector.y));
-        
+        vector.update();        
       });
-      
     }, 500);
     
   },  

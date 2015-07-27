@@ -367,6 +367,9 @@ function addInlet (options) {
   } 
 }
 
+function velocityAt (x, y) {
+  return [ velocityField0[I(x, y, 2, 0)], velocityField0[I(x, y, 2, 1)] ];
+}
 
 var requestAnimationFrame = (window.requestAnimationFrame       || 
               window.webkitRequestAnimationFrame || 
@@ -390,6 +393,7 @@ let running = true;
 
 return {
   resize,
+  velocityAt,
   addWall,
   addInlet,
   stop () {
