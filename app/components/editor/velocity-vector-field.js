@@ -25,7 +25,7 @@ module.exports = View.extend({
         this.x = x;
         this.y = y;
         this.el = svg
-          .line(0, 0, 1, 1)
+          .line(0, 0, 3, 3)
           .attr({
             stroke: '#bada55',
             strokeWidth: 0.1,
@@ -42,13 +42,7 @@ module.exports = View.extend({
       
       update () {
         
-        // this.el.attr("x2", Math.random());
-        
-      this.el.transform(new Snap.Matrix()
-        .translate(this.x, this.y)
-        .rotate(Math.random()*360, 0, 0)
-        .toTransformString());
-        
+        this.el.attr("x2", Math.random());
              
       }
       
@@ -56,8 +50,8 @@ module.exports = View.extend({
     
     let vectors = [];
     
-    for (let x = 1; x < Simulation.width; x+=3) {
-      for (let y = 1; y < Simulation.height; y+=3) {
+    for (let x = 1; x < Simulation.width; x+=8) {
+      for (let y = 1; y < Simulation.height; y+=8) {
         vectors.push(new VelocityVector(this.svg, x, y));
       }
     }
