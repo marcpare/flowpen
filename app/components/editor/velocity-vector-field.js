@@ -42,8 +42,14 @@ module.exports = View.extend({
       
       update () {
         
-        var vel = Simulation.velocityAt(this.x, this.y);
-        this.el.attr("x2", Math.random());
+        let vel = Simulation.velocityAt(this.x, this.y);
+        
+        let mag = Math.pow(vel[0]*vel[0] + vel[1]*vel[1], 2);
+        let dx = vel[0] / mag;
+        let dy = vel[1] / mag;
+        
+        this.el.attr("x2", dx);
+        this.el.attr("y2", dy);
              
       }
       
