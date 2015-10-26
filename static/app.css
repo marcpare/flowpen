@@ -10,10 +10,10 @@ z-index
 
 /* Global styles */
 
-body { 
-  font-family: "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+body {
+  font-family: "Lato", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
   font-size: 13px;
-  margin: 0; 
+  margin: 0;
   height: 100%;
   overflow: hidden;
   background: #ddd;
@@ -35,7 +35,7 @@ a {
 
 /* Simulation canvas */
 
-#c { 
+#c {
   background-color: #ccc;
 }
 #overlay {
@@ -60,7 +60,7 @@ a {
   top: 0;
   bottom: 0;
 }
-#sidebar { 
+#sidebar {
   background-color: #424242;
   color: #f3f3f3;
   z-index: 99;
@@ -78,10 +78,10 @@ a {
   font-size: 12px;
   text-transform: uppercase;
   text-align: center;
-  margin: 15px 0px; 
+  margin: 15px 0px;
   padding: 3px 0px;
 }
-.tool-section { 
+.tool-section {
   padding: 0px 10px;
 }
 .tool-button {
@@ -94,7 +94,7 @@ a {
   width: 100px;
   height: 100px;
   margin: 3px 1px;
-  border-radius: 3px; 
+  border-radius: 3px;
   font-family: arial;
   text-transform: uppercase;
 }
@@ -149,7 +149,7 @@ a {
   stroke: #f0fbff;
 }
 .sensor-label {
-	fill: white; 
+	fill: white;
 	font-size: 3px;
 }
 
@@ -181,7 +181,7 @@ a {
   display: block;
   fill: white;
   cursor: pointer;
-  border-radius: 3px; 
+  border-radius: 3px;
   padding: 10px 15px;
   margin-right: 5px;
   background: #616161;
