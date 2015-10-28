@@ -28,6 +28,12 @@ Link app in node_modules
 	cd node_modules
 	ln -s ../app .
 
+Link static directory and index.html
+
+  cd dist
+  ln -s ../static .
+  ln -s ../index.html .
+
 Run:
 
 	npm start

@@ -13,7 +13,7 @@ var notify = require('gulp-notify');
 var webserver = require('gulp-webserver');
 
 gulp.task('watch', function() {
-  watch(['app/**/*', 'static/**/*', 'gulpfile.js'], function() {
+  watch(['app/**/*', 'gulpfile.js'], function() {
     gulp.start('dist');
   });
 });
@@ -25,7 +25,7 @@ gulp.task('lint', function () {
     }))
     .pipe(notify(function (file) {
       if (file.jshint.success) {
-        return false; // Don't show something if success 
+        return false; // Don't show something if success
       }
 
       var errors = file.jshint.results.map(function (data) {
@@ -38,10 +38,6 @@ gulp.task('lint', function () {
     .pipe(jshint.reporter('default'));
 });
 
-gulp.task('copy-static', function () {
-  return gulp.src('static/**/*', {base:'static/'})
-    .pipe(gulp.dest('./dist/'));
-});
 
 gulp.task('copy-build', function () {
   return gulp.src('build/*', {base:'build/'})
@@ -53,15 +49,14 @@ gulp.task('build', function() {
     .transform(jadeify)
     .transform(babelify)
     .bundle()
-    .on('error', notify.onError("Browserify error <%= error.toString() %>"))  
+    .on('error', notify.onError("Browserify error <%= error.toString() %>"))
     .pipe(source('bundle.js'))
     .pipe(gulp.dest('./build/'));
 });
 
 gulp.task('dist', ['lint', 'build'], function () {
-  gulp.start('copy-static');
   gulp.start('copy-build');
-}); 
+});
 
 gulp.task('server', function () {
   gulp
@@ -69,12 +64,13 @@ gulp.task('server', function () {
     .pipe(webserver({
       livereload: false,
       directoryListing: false,
-      open: false
+      open: false,
+      port: 8001
   }));
 });
 
 gulp.task('start', ['server', 'dist', 'watch'], function () {
-  console.log('Starting development environment...'); 
+  console.log('Starting development environment...');
 });
 
 
