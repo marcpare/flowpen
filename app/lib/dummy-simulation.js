@@ -1,9 +1,11 @@
 module.exports = require('app/lib/simulation-base')({
-  draw (width, height, d) {
-    let di, pi, ui, x, y;
-    for(y = 0; y < height; y++) {
-      for(x = 0; x < width; x++) {
-        pi = (y*width+x);
+  draw (d) {
+    let di, pi, ui, x, y, w, h;
+    w = this.width;
+    h = this.height;
+    for(y = 0; y < h; y++) {
+      for(x = 0; x < w; x++) {
+        pi = (y*w+x);
         ui = pi*2;
         di = pi*4;
 

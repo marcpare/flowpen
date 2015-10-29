@@ -15,11 +15,18 @@
 //   })
 //
 
-module.exports = function (options) {
+let _ = require('underscore');
 
-  let initialize = options.initialize || () => {};
-  let simulate = options.simulation || () => {};
-  let draw = options.draw || () => {};
+module.exports = function (implementation) {
+
+  let simulation = {
+    initialize () {},
+    simulate() {},
+    draw () {}
+  };
+
+  simulation = _.extend(simulation, implementation);
+
   let ctx = false;
   let imageData = false;
   let WIDTH = false;
@@ -37,9 +44,9 @@ module.exports = function (options) {
 
   function animate () {
     if (!running) return;
-    simulate();
+    simulation.simulate();
     if (ctx && imageData) {
-      draw(WIDTH, HEIGHT, imageData.data);
+      simulation.draw(imageData.data);
       ctx.putImageData(imageData, 0, 0);
     }
     requestAnimationFrame(animate);
@@ -50,6 +57,9 @@ module.exports = function (options) {
 
     WIDTH = options.columns || 128;
     HEIGHT = options.rows || 128;
+
+    simulation.width = WIDTH;
+    simulation.height = HEIGHT;
 
     ctx = canvas.getContext('2d');
     ctx.fillRect(0, 0, WIDTH, HEIGHT);
