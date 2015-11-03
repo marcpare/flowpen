@@ -2,9 +2,10 @@ let SimulationBase = require('app/lib/simulation-base');
 
 class DummySimulation extends SimulationBase {
   draw () {
-    let di, pi, ui, x, y, w, h;
+    let di, pi, ui, x, y, w, h, d;
     w = this.width;
     h = this.height;
+    d = this.imageData.data;
     for(y = 0; y < h; y++) {
       for(x = 0; x < w; x++) {
         pi = (y*w+x);

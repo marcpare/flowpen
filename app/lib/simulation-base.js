@@ -34,9 +34,9 @@ class SimulationBase {
   initialize (canvas, options) {
     this.width = options.columns || 128;
     this.height = options.row || 128;
-    ctx = canvas.getContext('2d');
-    ctx.fillRect(0, 0, this.width, this.height);
-    imageData = ctx.getImageData(0, 0, this.width, this.height);
+    this.ctx = canvas.getContext('2d');
+    this.ctx.fillRect(0, 0, this.width, this.height);
+    this.imageData = this.ctx.getImageData(0, 0, this.width, this.height);
   }
 
   start () {
@@ -47,12 +47,15 @@ class SimulationBase {
   animate () {
     if (!this.running) return;
     this.simulate();
+
     if (this.ctx && this.imageData) {
       this.draw();
       this.ctx.putImageData(this.imageData, 0, 0);
     }
     requestAnimationFrame(this.animate.bind(this));
   }
+
+  simulate () {}
 
   resize () {}
 

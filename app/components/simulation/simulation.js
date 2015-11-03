@@ -110,7 +110,7 @@ module.exports = AmpersandView.extend({
     this.elScaleFrame.setAttribute('transform', `scale(${c})`);
 
     // Update the simulation globals
-    this.simulation.resize();
+    if (this.simulation.resize) this.simulation.resize();
 
   },
 
