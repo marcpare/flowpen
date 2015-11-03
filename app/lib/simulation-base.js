@@ -16,6 +16,7 @@
 //
 
 let _ = require('underscore');
+let fill = require('app/lib/arrays/fill');
 
 let requestAnimationFrame = (window.requestAnimationFrame ||
   window.webkitRequestAnimationFrame ||
@@ -37,6 +38,39 @@ class SimulationBase {
     this.ctx = canvas.getContext('2d');
     this.ctx.fillRect(0, 0, this.width, this.height);
     this.imageData = this.ctx.getImageData(0, 0, this.width, this.height);
+
+    this.ctx.fillRect(0, 0, this.width, this.height);
+
+    let N = this.width*this.height;
+    this.N = N;
+    this.isFluid = new Array(N);
+    fill(this.isFluid, true);
+
+    this.inletVelocityField = new Float32Array(N*2);
+    fill(this.inletVelocityField, 0.0);
+
+    this.velocityField0 = new Float32Array(N*2);
+    this.velocityField1 = new Float32Array(N*2);
+    this.pressureField0 = new Float32Array(N);
+    this.pressureField1 = new Float32Array(N);
+    this.divergenceField = new Float32Array(N);
+    this.step = 4.0;
+
+    fill(this.pressureField0, 0.0);
+    fill(this.pressureField1, 0.0);
+    fill(this.velocityField0, 0.0);
+    fill(this.velocityField1, 0.0);
+
+    // TODO: do these get replace with macros or functions, or..?
+    // u0x = sampler(velocityField0, WIDTH, HEIGHT, 2, 0),
+    // u0y = sampler(velocityField0, WIDTH, HEIGHT, 2, 1),
+    // u1x = sampler(velocityField1, WIDTH, HEIGHT, 2, 0),
+    // u1y = sampler(velocityField1, WIDTH, HEIGHT, 2, 1),
+    // p0 = sampler(pressureField0, WIDTH, HEIGHT, 1, 0),
+    // p1 = sampler(pressureField1, WIDTH, HEIGHT, 1, 0),
+    // div = sampler(divergenceField, WIDTH, HEIGHT, 1, 0),
+    // velocityboundary(u0x, u0y);
+
   }
 
   start () {
