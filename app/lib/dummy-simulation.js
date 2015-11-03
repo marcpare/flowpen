@@ -1,5 +1,7 @@
-module.exports = require('app/lib/simulation-base')({
-  draw (d) {
+let SimulationBase = require('app/lib/simulation-base');
+
+class DummySimulation extends SimulationBase {
+  draw () {
     let di, pi, ui, x, y, w, h;
     w = this.width;
     h = this.height;
@@ -15,4 +17,6 @@ module.exports = require('app/lib/simulation-base')({
       }
     }
   }
-});
+}
+
+module.exports = DummySimulation;

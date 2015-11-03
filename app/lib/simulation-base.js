@@ -17,66 +17,55 @@
 
 let _ = require('underscore');
 
-module.exports = function (implementation) {
+let requestAnimationFrame = (window.requestAnimationFrame ||
+  window.webkitRequestAnimationFrame ||
+  window.mozRequestAnimationFrame    ||
+  window.oRequestAnimationFrame      ||
+  window.msRequestAnimationFrame     ||
+  function (callback) {
+    window.setTimeout(callback, 1000 / 60);
+  });
 
-  let simulation = {
-    initialize () {},
-    simulate() {},
-    draw () {}
-  };
-
-  simulation = _.extend(simulation, implementation);
-
-  let ctx = false;
-  let imageData = false;
-  let WIDTH = false;
-  let HEIGHT = false;
-
-  let requestAnimationFrame = (window.requestAnimationFrame ||
-    window.webkitRequestAnimationFrame ||
-    window.mozRequestAnimationFrame    ||
-    window.oRequestAnimationFrame      ||
-    window.msRequestAnimationFrame     ||
-    function (callback) {
-      window.setTimeout(callback, 1000 / 60);
-    });
-  let running = true;
-
-  function animate () {
-    if (!running) return;
-    simulation.simulate();
-    if (ctx && imageData) {
-      simulation.draw(imageData.data);
-      ctx.putImageData(imageData, 0, 0);
-    }
-    requestAnimationFrame(animate);
+class SimulationBase {
+  constructor () {
+    this.running = false;
   }
-  animate();
 
-  return function (canvas, options) {
-
-    WIDTH = options.columns || 128;
-    HEIGHT = options.rows || 128;
-
-    simulation.width = WIDTH;
-    simulation.height = HEIGHT;
-
+  initialize (canvas, options) {
+    this.width = options.columns || 128;
+    this.height = options.row || 128;
     ctx = canvas.getContext('2d');
-    ctx.fillRect(0, 0, WIDTH, HEIGHT);
-    imageData = ctx.getImageData(0, 0, WIDTH, HEIGHT);
+    ctx.fillRect(0, 0, this.width, this.height);
+    imageData = ctx.getImageData(0, 0, this.width, this.height);
+  }
 
-    function resize () {}
-    function velocityAt () {}
-    function addWall () {}
-    function addInlet () {}
-    function stop () { running = false; }
+  start () {
+    this.running = true;
+    this.animate();
+  }
 
-    return {
-      resize,
-      velocityAt,
-      addWall,
-      addInlet,
-      stop
-    };
-  };
-};
+  animate () {
+    if (!this.running) return;
+    this.simulate();
+    if (this.ctx && this.imageData) {
+      this.draw();
+      this.ctx.putImageData(this.imageData, 0, 0);
+    }
+    requestAnimationFrame(this.animate.bind(this));
+  }
+
+  resize () {}
+
+  velocityAt () {}
+
+  addWall () {}
+
+  addInlet () {}
+
+  stop () {
+    this.running = false;
+  }
+
+}
+
+module.exports = SimulationBase;
