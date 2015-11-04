@@ -11,6 +11,21 @@ class StamWagner2 extends SimulationBase {
     }
   }
 
+  advect (ux, uy, src, dest, t) {
+
+  }
+
+  simulate () {
+    this.velocityboundary(this.u0x, this.u0y);
+    this.advect(this.u0x, this.u0y, this.u0x, this.u1x, this.step);
+    this.advect(this.u0x, this.u0y, this.u0y, this.u1y, this.step);
+
+    [this.p0, this.p1] = [this.p1, this.p0];
+    [this.u0x, this.u1x] = [this.u1x, this.u0x];
+    [this.u0y, this.u1y] = [this.u1y, this.u0y];
+  }
+
+  // TODO: factor this out into a visualization module and inject it
   draw () {
     let di, pi, ui, x, y, w, h, d;
     let I = this.I;
