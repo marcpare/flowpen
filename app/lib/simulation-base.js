@@ -32,6 +32,8 @@ let I = () => {};
 class SimulationBase {
   constructor () {
     this.running = false;
+
+    this.bilerp = require('app/lib/numerical/bilerp');
   }
 
   initialize (canvas, options) {

@@ -3,7 +3,9 @@ function lerp (a, b, c){
     return a * (1 - c) + b * c;
 }
 
-module.exports = function (sample, x, y, I) {
+// Expects to be mixed into an object with an `I` indexer
+module.exports = function (sample, x, y) {
+  let I = this.I;
   let x0 = ~~x,
     y0 = ~~y,
     x1 = x0+1,

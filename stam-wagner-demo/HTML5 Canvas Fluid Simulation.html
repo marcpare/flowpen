@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<!-- saved from url=(0039)http://29a.ch/sandbox/2012/fluidcanvas/ -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>HTML5 Canvas Fluid Simulation</title>
+    <link href="./HTML5 Canvas Fluid Simulation_files/css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="./HTML5 Canvas Fluid Simulation_files/style.css">
+  <style type="text/css"></style><script src="./HTML5 Canvas Fluid Simulation_files/cb=gapi.loaded_1" async=""></script><script src="./HTML5 Canvas Fluid Simulation_files/cb=gapi.loaded_0" async=""></script><script type="text/javascript" charset="utf-8" async="" src="./HTML5 Canvas Fluid Simulation_files/button.aec556e1a316f63b43fda3ae1e6a3e10.js"></script></head>
+<body>
+<div id="header">
+  <h1><a href="http://29a.ch/">29a.ch</a></h1>
+  <p><a href="http://29a.ch/2012/11/5/html-5-canvas-fluid-simulation/">More about this experiment</a></p>&nbsp;&nbsp;&nbsp;
+  <p><a href="http://29a.ch/experiments/">More Experiments &amp; Toys</a></p>
+  <div id="social">
+      <iframe id="twitter-widget-0" scrolling="no" frameborder="0" allowtransparency="true" class="twitter-share-button twitter-share-button-rendered twitter-tweet-button" title="Twitter Tweet Button" src="./HTML5 Canvas Fluid Simulation_files/tweet_button.a428ab2e859e8008e0df5404770eb017.en.html" style="position: static; visibility: visible; width: 81px; height: 20px;" data-url="http://29a.ch/sandbox/2012/fluidcanvas/"></iframe>
+      <iframe src="./HTML5 Canvas Fluid Simulation_files/like.html" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:90px;height:20px;" allowtransparency="true"></iframe>
+     <div id="___plusone_0" style="text-indent: 0px; margin: 0px; padding: 0px; border-style: none; float: none; line-height: normal; font-size: 1px; vertical-align: baseline; display: inline-block; width: 90px; height: 20px; background: transparent;"><iframe frameborder="0" hspace="0" marginheight="0" marginwidth="0" scrolling="no" style="position: static; top: 0px; width: 90px; margin: 0px; border-style: none; left: 0px; visibility: visible; height: 20px;" tabindex="0" vspace="0" width="100%" id="I0_1446667079140" name="I0_1446667079140" src="./HTML5 Canvas Fluid Simulation_files/fastbutton.html" data-gapiattached="true" title="+1"></iframe></div>
+    </div> 
+</div> 
+<div id="content">
+<canvas id="c" width="128" height="128" style="width:512px;height:512px;float: left;"></canvas>
+<div><p>
+    This is a simplistic fluid simulation based on the <a href="http://en.wikipedia.org/wiki/Navier%E2%80%93Stokes_equations">navier stokes equations</a> using the HTML5 Canvas element.
+    I created it to make sure I understood the concepts involved well enough before starting the WebGL implementation.
+    I hope that the result of this experiments will lead to a successor to my (quite popular) <a href="http://29a.ch/sandbox/2011/neonflames">Neon Flames</a> experiment.</p>
+<p>
+    <span style="color:#c00;">If you want to have some fun</span> apply some pressure to one of the corners of the canvas.
+    It will send the entire simulation on a <em>acid trip</em>. ;)
+    </p>
+    <p>This happens because I do not enforce the boundary conditions in the solver.
+    Of course I did this on purpose for speed and this trippy effect. ;)</p>
+</div>
+</div>
+<p style="clear:both;margin:8px;color:#666">by <a href="https://plus.google.com/107896782168573495211?rel=author" rel="author">Jonas Wagner</a></p>
+<script type="text/javascript" async="" src="./HTML5 Canvas Fluid Simulation_files/ga.js"></script><script src="./HTML5 Canvas Fluid Simulation_files/fluid.js"></script>
+<script type="text/javascript" src="./HTML5 Canvas Fluid Simulation_files/widgets.js" async="" defer=""></script>
+<script type="text/javascript" src="./HTML5 Canvas Fluid Simulation_files/plusone.js" async="" defer="" gapi_processed="true"></script>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-5205069-2']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+
+<iframe name="oauth2relay691294055" id="oauth2relay691294055" src="./HTML5 Canvas Fluid Simulation_files/postmessageRelay.html" tabindex="-1" style="width: 1px; height: 1px; position: absolute; top: -100px;"></iframe></body></html>
