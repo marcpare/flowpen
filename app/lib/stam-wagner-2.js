@@ -1,18 +1,27 @@
 let SimulationBase = require('app/lib/simulation-base');
+let bilerp = require('app/lib/numerical/bilerp');
 
 class StamWagner2 extends SimulationBase {
 
   initialize (canvas, options) {
+    let i;
     super.initialize(canvas, options);
 
-    for(let i=0; i < this.N; i++) {
+    for(i=0; i < this.N; i++) {
       this.u0x[i] = (Math.random()-0.5)*10.0;
       this.u0y[i] = (Math.random()-0.5)*10.0;
     }
   }
 
   advect (ux, uy, src, dest, t) {
-
+    let x, y, vx, vy, I=this.I;
+    for(y=1; y < this.height-1; y++) {
+      for(x=1; x < this.width-1; x++) {
+        vx = ux[I(x, y)]*t;
+        vy = uy[I(x, y)]*t;
+        dest[I(x, y)] = bilerp(src, x+vx, y+vy, I);
+      }
+    }
   }
 
   simulate () {
