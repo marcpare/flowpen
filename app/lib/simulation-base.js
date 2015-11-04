@@ -44,6 +44,8 @@ class SimulationBase {
     this.ctx.fillRect(0, 0, this.width, this.height);
 
     let N = this.width*this.height;
+    let W = this.width;
+    let H = this.height;
     this.N = N;
     this.isFluid = new Array(N);
     fill(this.isFluid, true);
@@ -70,7 +72,8 @@ class SimulationBase {
     fill(this.div, 0.0);
 
     // Indexing function for the flattened 2D arrays
-    I = (x, y) => { return y*N + x; };
+    I = (x, y) => { return y*W + x; };
+    this.I = I;
   }
 
   // Set the velocity to zero along the edges of the simulation
@@ -109,7 +112,9 @@ class SimulationBase {
     requestAnimationFrame(this.animate.bind(this));
   }
 
-  simulate () {}
+  simulate () {
+    this.velocityboundary(this.u0x, this.u0y);
+  }
 
   resize () {}
 
