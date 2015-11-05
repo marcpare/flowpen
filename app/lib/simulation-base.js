@@ -17,6 +17,7 @@
 
 let _ = require('underscore');
 let fill = require('app/lib/arrays/fill');
+let config = require('app/config');
 
 let requestAnimationFrame = (window.requestAnimationFrame ||
   window.webkitRequestAnimationFrame ||
@@ -37,8 +38,8 @@ class SimulationBase {
   }
 
   initialize (canvas, options) {
-    this.width = options.columns || 128;
-    this.height = options.row || 128;
+    this.width = options.columns || config.simulationDefaults.defaultColumns;
+    this.height = options.row || config.simulationDefaults.defaultRows;
     this.ctx = canvas.getContext('2d');
     this.ctx.fillRect(0, 0, this.width, this.height);
     this.imageData = this.ctx.getImageData(0, 0, this.width, this.height);
@@ -61,7 +62,7 @@ class SimulationBase {
     this.p1 = new Float32Array(N);
     this.div = new Float32Array(N);
 
-    this.step = 4.0;
+    this.step = config.simulationDefaults.steps;
 
     fill(this.u0x, 0.0);
     fill(this.u0y, 0.0);
@@ -109,7 +110,14 @@ class SimulationBase {
       this.draw();
       this.ctx.putImageData(this.imageData, 0, 0);
     }
-    requestAnimationFrame(this.animate.bind(this));
+
+    if (config.simulationDefaults.frameDelay) {
+      window.setTimeout(() => {
+        requestAnimationFrame(this.animate.bind(this));
+      }, config.simulationDefaults.frameDelay);
+    } else {
+      requestAnimationFrame(this.animate.bind(this));
+    }
   }
 
   simulate () {
