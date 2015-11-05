@@ -16,12 +16,11 @@ class StamWagner2 extends SimulationBase {
     let x, y, vx, vy, I=this.I;
     for(y=1; y < this.height-1; y++) {
       for(x=1; x < this.width-1; x++) {
-        vx = ux[I(x, y)]*t;
-        vy = uy[I(x, y)]*t;
-        // TODO: factor out bounds checking
-        // if (x+vx < this.width - 1 && y+vy < this.height - 1 && x + vx >= 0 && y+vy >= 0) {
-          dest[I(x, y)] = this.bilerp(src, x+vx, y+vy);
-        // }
+        vx = x + ux[I(x, y)]*t;
+        vy = y + uy[I(x, y)]*t;
+        if (this.inBounds(vx, vy) && this.inBounds(vx+1, vy+1)) {
+          dest[I(x, y)] = this.bilerp(src, vx, vy);
+        }
       }
     }
   }

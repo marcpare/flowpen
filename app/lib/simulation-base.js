@@ -75,7 +75,7 @@ class SimulationBase {
     // Indexing function for the flattened 2D arrays
     if (config.simulationDefaults.indexerBoundsCheck) {
       I = (x, y) => {
-        if (x < 0 || y < 0 || y >= H || x >= W) {
+        if (!this.inBounds(x, y)) {
           throw "Index out of bounds";
         }
         return y*W + x;
@@ -85,6 +85,10 @@ class SimulationBase {
     }
 
     this.I = I;
+  }
+
+  inBounds (x, y) {
+    return (x >= 0 && y >= 0 && y < this.height && x < this.width);
   }
 
   // Set the velocity to zero along the edges of the simulation
