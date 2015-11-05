@@ -11,10 +11,11 @@ class StamWagner2 extends SimulationBase {
       this.u0y[i] = (Math.random()-0.5)*10.0;
     }
 
-    window.setInterval(() => {
-      console.log(this.imageData.data);
-      console.log(this.u0x);
-    }, 1000);
+    // TODO: make this configurable
+    // window.setInterval(() => {
+    //   console.log(this.imageData.data);
+    //   console.log(this.u0x);
+    // }, 1000);
   }
 
   advect (ux, uy, src, dest, t) {
@@ -23,7 +24,8 @@ class StamWagner2 extends SimulationBase {
       for(x=1; x < this.width-1; x++) {
         vx = ux[I(x, y)]*t;
         vy = uy[I(x, y)]*t;
-        if (x+vx < this.width - 1 && y+vy < this.height - 1) {
+        // TODO: factor out bounds checking
+        if (x+vx < this.width - 1 && y+vy < this.height - 1 && x + vx >= 0 && y+vy >= 0) {
           dest[I(x, y)] = this.bilerp(src, x+vx, y+vy);
         }
       }
