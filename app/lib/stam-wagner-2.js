@@ -10,12 +10,6 @@ class StamWagner2 extends SimulationBase {
       this.u0x[i] = (Math.random()-0.5)*10.0;
       this.u0y[i] = (Math.random()-0.5)*10.0;
     }
-
-    // TODO: make this configurable
-    // window.setInterval(() => {
-    //   console.log(this.imageData.data);
-    //   console.log(this.u0x);
-    // }, 1000);
   }
 
   advect (ux, uy, src, dest, t) {
@@ -86,9 +80,9 @@ class StamWagner2 extends SimulationBase {
     this.velocityboundary(this.u0x, this.u0y);
     this.advect(this.u0x, this.u0y, this.u0x, this.u1x, this.step);
     this.advect(this.u0x, this.u0y, this.u0y, this.u1y, this.step);
-    // this.computeDivergence(this.u1x, this.u1y, this.div);
-    // this.fastjacobi(this.p0, this.p1, this.div, -1, 0.25, 16);
-    // this.subtractPressureGradient(this.u1x, this.u1y, this.p0);
+    this.computeDivergence(this.u1x, this.u1y, this.div);
+    this.fastjacobi(this.p0, this.p1, this.div, -1, 0.25, 16);
+    this.subtractPressureGradient(this.u1x, this.u1y, this.p0);
 
     [this.p0, this.p1] = [this.p1, this.p0];
     [this.u0x, this.u1x] = [this.u1x, this.u0x];
