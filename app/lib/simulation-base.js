@@ -73,7 +73,17 @@ class SimulationBase {
     fill(this.div, 0.0);
 
     // Indexing function for the flattened 2D arrays
-    I = (x, y) => { return y*W + x; };
+    if (config.simulationDefaults.indexerBoundsCheck) {
+      I = (x, y) => {
+        if (x < 0 || y < 0 || y >= H || x >= W) {
+          throw "Index out of bounds";
+        }
+        return y*W + x;
+      };
+    } else {
+      I = (x, y) => { return y*W + x; };
+    }
+
     this.I = I;
   }
 

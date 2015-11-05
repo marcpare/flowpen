@@ -19,9 +19,9 @@ class StamWagner2 extends SimulationBase {
         vx = ux[I(x, y)]*t;
         vy = uy[I(x, y)]*t;
         // TODO: factor out bounds checking
-        if (x+vx < this.width - 1 && y+vy < this.height - 1 && x + vx >= 0 && y+vy >= 0) {
+        // if (x+vx < this.width - 1 && y+vy < this.height - 1 && x + vx >= 0 && y+vy >= 0) {
           dest[I(x, y)] = this.bilerp(src, x+vx, y+vy);
-        }
+        // }
       }
     }
   }
