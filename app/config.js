@@ -1,5 +1,7 @@
 module.exports = {
 
+  solver: 'stam-wagner-2',
+
   simulationDefaults: {
 
     // The indexer will check if the provided coordinates are in bounds.

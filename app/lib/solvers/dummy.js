@@ -1,4 +1,4 @@
-let SimulationBase = require('app/lib/simulation-base');
+let SimulationBase = require('app/lib/solvers/base');
 
 class DummySimulation extends SimulationBase {
   draw () {

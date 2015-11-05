@@ -5,9 +5,8 @@ let Simulation = require('app/models/simulation');
 let EditorObjects = require('app/models/editor-objects');
 let Bus = require('app/lib/bus');
 let UrlPersistor = require('app/lib/url-persistor');
-let StamWagnerSimulation = require('app/lib/stam-wagner-simulation-obstacles');
-let DummySimulation = require('app/lib/dummy-simulation');
-let StamWagner2 = require('app/lib/stam-wagner-2');
+let Solvers = require('app/lib/solvers');
+let config = require('app/config');
 
 module.exports = AmpersandView.extend({
   template: require('app/components/simulation/simulation.jade'),
@@ -66,7 +65,7 @@ module.exports = AmpersandView.extend({
   },
 
   startSimulation () {
-    Simulation.initialize(StamWagner2, this.query('#c'), this.simulationOptions);
+    Simulation.initialize(Solvers[config.solver], this.query('#c'), this.simulationOptions);
     this.simulation = Simulation;
     this.recenter();
   },
