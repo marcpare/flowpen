@@ -43,8 +43,6 @@ class SimulationBase {
     this.ctx.fillRect(0, 0, this.width, this.height);
     this.imageData = this.ctx.getImageData(0, 0, this.width, this.height);
 
-    this.ctx.fillRect(0, 0, this.width, this.height);
-
     let N = this.width*this.height;
     let W = this.width;
     let H = this.height;

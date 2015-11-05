@@ -276,6 +276,9 @@ var requestAnimationFrame = (window.requestAnimationFrame       ||
     requestAnimationFrame(animate);
 })();
 
+window.setInterval(() => {
+  console.log(imageData.data);
+}, 1000);
 
 
 })();
