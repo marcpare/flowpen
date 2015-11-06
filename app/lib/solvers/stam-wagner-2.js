@@ -3,13 +3,7 @@ let SimulationBase = require('app/lib/solvers/base');
 class StamWagner2 extends SimulationBase {
 
   initialize (canvas, options) {
-    let i;
     super.initialize(canvas, options);
-
-    for(i=0; i < this.N; i++) {
-      this.u0x[i] = (Math.random()-0.5)*10.0;
-      this.u0y[i] = (Math.random()-0.5)*10.0;
-    }
   }
 
   advect (ux, uy, src, dest, t) {

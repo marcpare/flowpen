@@ -4,9 +4,14 @@
 // http://energy.concord.org/energy2d/
 //
 
-module.exports = function (canvas, options) {
+let SimulationBase = require('app/lib/solvers/base');
 
-  // TODO: initialize the solver harness, rendering a dummy canvas
+class XieFluids extends SimulationBase {
 
+  initialize (canvas, options) {
+    super.initialize(canvas, options);
+  }
 
-};
+}
+
+module.exports = XieFluids;

@@ -85,6 +85,14 @@ class SimulationBase {
     }
 
     this.I = I;
+
+    if (config.simulationDefaults.randomStart) {
+      let i;
+      for(i=0; i < this.N; i++) {
+        this.u0x[i] = (Math.random()-0.5)*10.0;
+        this.u0y[i] = (Math.random()-0.5)*10.0;
+      }
+    }
   }
 
   inBounds (x, y) {

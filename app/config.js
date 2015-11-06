@@ -4,6 +4,9 @@ module.exports = {
 
   simulationDefaults: {
 
+    // Fill the pen with random velocities
+    randomStart: true,
+
     // The indexer will check if the provided coordinates are in bounds.
     // Meant for debugging, since it will slow down the simulation.
     indexerBoundsCheck: true,
@@ -16,7 +19,9 @@ module.exports = {
     // slowing down a fast running animation
     frameDelay: false,
 
-    steps: 4.0
+    steps: 4.0,
+
+    solver: 'stam-wagner-2'
 
   }
 
