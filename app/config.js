@@ -6,6 +6,16 @@ module.exports = {
 
   simulationDefaults: {
 
+    relaxationSteps: 5,
+
+    // Air's kinematic viscosity = 1.568 x 10^-5 m^2/s at 27 C
+    viscosity: 10 * 0.00001568,
+
+    timeStep: 0.1,
+
+    // meters / cell
+    cellSide: 10 / 128,
+
     // Fill the pen with random velocities
     randomStart: true,
 

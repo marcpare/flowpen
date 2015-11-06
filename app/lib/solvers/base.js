@@ -96,10 +96,27 @@ class SimulationBase {
     }
 
     this.draw = visualizers[config.visualizer];
+
+    this.viscosity = config.simulationDefaults.viscosity;
+
+    this.deltaX = config.cellSide / this.width;
+    this.deltaY = config.cellSide / this.height;
+    this.i2dx = 0.5 / this.deltaX;
+    this.i2dy = 0.5 / this.deltaY;
+    this.idxsq = 1.0 / (this.deltaX * this.deltaX);
+    this.idysq = 1.0 / (this.deltaY * this.deltaY);
+
+    this.relaxationSteps = config.relaxationSteps;
   }
 
   inBounds (x, y) {
     return (x >= 0 && y >= 0 && y < this.height && x < this.width);
+  }
+
+  copy (dst, src) {
+    for (let i = 0, N = src.length; i < N; i++) {
+      dst[i] = src[i];
+    }
   }
 
   // Set the velocity to zero along the edges of the simulation
