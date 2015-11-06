@@ -18,6 +18,7 @@
 let _ = require('underscore');
 let fill = require('app/lib/arrays/fill');
 let config = require('app/config');
+let visualizers = require('app/lib/visualizers');
 
 let requestAnimationFrame = (window.requestAnimationFrame ||
   window.webkitRequestAnimationFrame ||
@@ -93,6 +94,8 @@ class SimulationBase {
         this.u0y[i] = (Math.random()-0.5)*10.0;
       }
     }
+
+    this.draw = visualizers[config.visualizer];
   }
 
   inBounds (x, y) {

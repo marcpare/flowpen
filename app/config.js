@@ -1,6 +1,8 @@
 module.exports = {
 
-  solver: 'stam-wagner-2',
+  solver: 'xie-fluids',
+
+  visualizer: 'cool',
 
   simulationDefaults: {
 
@@ -19,9 +21,7 @@ module.exports = {
     // slowing down a fast running animation
     frameDelay: false,
 
-    steps: 4.0,
-
-    solver: 'stam-wagner-2'
+    steps: 4.0
 
   }
 
