@@ -117,6 +117,10 @@ class SimulationBase {
     console.assert(this.idxsq);
 
     this.safeMode = config.safeMode;
+
+    if (this.everySecond) {
+      window.setInterval(this.everySecond.bind(this), 1000);
+    }
   }
 
   inBounds (x, y) {
@@ -150,16 +154,13 @@ class SimulationBase {
   }
 
   runSafetyChecks () {
-
     let checkNaN = (arr) => {
       for (let i = 0, N = arr.length; i < N; i++) {
         if (isNaN(arr[i])) throw "Failed NaN safety check";
       }
     };
-
     checkNaN(this.u0x);
     checkNaN(this.u0y);
-
   }
 
   start () {

@@ -12,6 +12,10 @@ class XieFluids extends SimulationBase {
     super.initialize(canvas, options);
   }
 
+  everySecond () {
+    // console.log(this.u0x);
+  }
+
   // f0: dst
   // f1: src
   diffuse (f0, f) {
