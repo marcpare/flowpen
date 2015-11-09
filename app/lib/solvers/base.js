@@ -99,14 +99,24 @@ class SimulationBase {
 
     this.viscosity = config.simulationDefaults.viscosity;
 
-    this.deltaX = config.cellSide / this.width;
-    this.deltaY = config.cellSide / this.height;
+    this.deltaX = config.simulationDefaults.cellSide / this.width;
+    this.deltaY = config.simulationDefaults.cellSide / this.height;
     this.i2dx = 0.5 / this.deltaX;
     this.i2dy = 0.5 / this.deltaY;
     this.idxsq = 1.0 / (this.deltaX * this.deltaX);
     this.idysq = 1.0 / (this.deltaY * this.deltaY);
 
-    this.relaxationSteps = config.relaxationSteps;
+    this.relaxationSteps = config.simulationDefaults.relaxationSteps;
+
+    this.timeStep = config.simulationDefaults.timeStep;
+
+    // Safety checks that configuration worked
+    console.assert(this.timeStep);
+    console.assert(this.relaxationSteps);
+    console.assert(this.viscosity);
+    console.assert(this.idxsq);
+
+    this.safeMode = config.safeMode;
   }
 
   inBounds (x, y) {
@@ -139,6 +149,19 @@ class SimulationBase {
     }
   }
 
+  runSafetyChecks () {
+
+    let checkNaN = (arr) => {
+      for (let i = 0, N = arr.length; i < N; i++) {
+        if (isNaN(arr[i])) throw "Failed NaN safety check";
+      }
+    };
+
+    checkNaN(this.u0x);
+    checkNaN(this.u0y);
+
+  }
+
   start () {
     this.running = true;
     this.animate();
@@ -147,6 +170,10 @@ class SimulationBase {
   animate () {
     if (!this.running) return;
     this.simulate();
+
+    if (this.safeMode) {
+      this.runSafetyChecks();
+    }
 
     if (this.ctx && this.imageData) {
       this.draw();

@@ -4,12 +4,14 @@ module.exports = {
 
   visualizer: 'cool',
 
+  safeMode: true,
+
   simulationDefaults: {
 
     relaxationSteps: 5,
 
     // Air's kinematic viscosity = 1.568 x 10^-5 m^2/s at 27 C
-    viscosity: 10 * 0.00001568,
+    viscosity: 0.001 * 0.00001568,
 
     timeStep: 0.1,
 

@@ -8,7 +8,7 @@ let SimulationBase = require('app/lib/solvers/base');
 
 class XieFluids extends SimulationBase {
 
-  initialize () {
+  initialize (canvas, options) {
     super.initialize(canvas, options);
   }
 
@@ -18,6 +18,7 @@ class XieFluids extends SimulationBase {
 
     this.copy(f0, f);
 
+    let I = this.I;
     let hx = this.timeStep * this.viscosity * this.idxsq;
     let hy = this.timeStep * this.viscosity * this.idysq;
     let dn = 1.0 / (1.0 + 2.0 * (hx + hy));
@@ -33,7 +34,6 @@ class XieFluids extends SimulationBase {
       // TODO: implement; then see if it works!
       // applyBoundary(b, f);
     }
-
   }
 
   simulate () {
@@ -43,13 +43,10 @@ class XieFluids extends SimulationBase {
     //   2 vertical (y)
 
     if (this.viscosity > 0) { // viscid
-      this.diffuse(1, this.u0, this.u);
-      this.diffuse(2, this.v0, this.v);
-
       this.diffuse(this.u1x, this.u0x);
       this.diffuse(this.u1y, this.u0y);
-
     }
+
   }
 
 }
