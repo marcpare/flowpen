@@ -49,6 +49,10 @@ class SimulationBase {
     let W = this.width;
     let H = this.height;
     this.N = N;
+    this.nx = this.width;
+    this.ny = this.height;
+    this.nx1 = this.nx - 1;
+    this.ny1 = this.ny - 1;
     this.isFluid = new Array(N);
     fill(this.isFluid, true);
 

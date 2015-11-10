@@ -34,9 +34,38 @@ class XieFluids extends SimulationBase {
           f[I(i, j)] = (f0[I(i, j)] + hx * (f[I(i-1, j)] + f[I(i+1, j)]) + hy * (f[I(i, j-1)] + f[I(i, j+1)])) * dn;
         }
       }
+    }
+  }
 
-      // TODO: implement; then see if it works!
-      // applyBoundary(b, f);
+  // Enforce the continuity condition div(V)=0 (velocity field must be divergence-free to conserve mass) using
+  // the relaxation method: http://en.wikipedia.org/wiki/Relaxation_method.
+  // This procedure solves the Poisson equation.
+  conserve (u, v, phi, div) {
+    let I = this.I;
+    let i, j, k;
+
+    for (i = 1; i < this.nx1; i++) {
+      for (j = 1; j < this.ny1; j++) {
+        div[I(i, j)] = (u[I(i + 1, j)] - u[I(i - 1, j)]) * this.i2dx + (v[I(i, j + 1)] - v[I(i, j - 1)]) * this.i2dy;
+        phi[I(i, j)] = 0;
+      }
+    }
+
+    let s = 0.5 / (this.idxsq + this.idysq);
+
+    for (k = 0; k < this.relaxationSteps; k++) {
+      for (i = 1; i < this.nx1; i++) {
+        for (j = 1; j < this.ny1; j++) {
+          phi[I(i, j)] = s * ((phi[I(i - 1, j)] + phi[I(i + 1, j)]) * this.idxsq + (phi[I(i, j - 1)] + phi[I(i, j + 1)]) * this.idysq - div[I(i, j)]);
+        }
+      }
+    }
+
+    for (i = 1; i < this.nx1; i++) {
+      for (j = 1; j < this.ny1; j++) {
+        u[I(i, j)] -= (phi[I(i + 1, j)] - phi[I(i - 1, j)]) * this.i2dx;
+        v[I(i, j)] -= (phi[I(i, j + 1)] - phi[I(i, j - 1)]) * this.i2dy;
+      }
     }
   }
 
@@ -49,7 +78,11 @@ class XieFluids extends SimulationBase {
     if (this.viscosity > 0) { // viscid
       this.diffuse(this.u1x, this.u0x);
       this.diffuse(this.u1y, this.u0y);
+
+      this.conserve(this.u0x, this.u0y, this.u1x, this.u1y);
     }
+
+    // TODO: advect
 
   }
 
