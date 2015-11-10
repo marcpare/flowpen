@@ -53,6 +53,8 @@ class SimulationBase {
     this.ny = this.height;
     this.nx1 = this.nx - 1;
     this.ny1 = this.ny - 1;
+    this.nx2 = this.nx - 2;
+    this.ny2 = this.ny - 2;
     this.isFluid = new Array(N);
     fill(this.isFluid, true);
 
@@ -165,6 +167,9 @@ class SimulationBase {
     };
     checkNaN(this.u0x);
     checkNaN(this.u0y);
+    checkNaN(this.u1x);
+    checkNaN(this.u1y);
+
   }
 
   start () {
