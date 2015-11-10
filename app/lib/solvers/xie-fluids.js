@@ -95,7 +95,7 @@ class XieFluids extends SimulationBase {
       }
     }
     // TODO: *
-    this.applyBoundary(this.phi, this.div);
+    this.applyBoundary(phi, div);
 
     let s = 0.5 / (this.idxsq + this.idysq);
 
