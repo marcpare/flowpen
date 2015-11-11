@@ -37,3 +37,11 @@ Link static directory and index.html
 Run:
 
 	npm start
+
+Converting Java array indexing to I indexing:
+
+  Find:
+  \[(.{1,5}?)\]\[(.+?)\]
+
+  Replace:
+  [I($1, $2)]

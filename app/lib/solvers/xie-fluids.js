@@ -116,6 +116,34 @@ class XieFluids extends SimulationBase {
     this.applyBoundary(u, v);
   }
 
+  // MacCormack
+  advect (f0, f) {
+
+    let I = this.I;
+    let i, j, nx1 = this.nx1, ny1 = this.ny1;
+    let tx = 0.5 * this.timeStep / this.deltaX;
+    let ty = 0.5 * this.timeStep / this.deltaY;
+    let u0 = this.u0x, v0 = this.u0y;
+
+    for (i = 1; i < nx1; i++) {
+      for (j = 1; j < ny1; j++) {
+        f[I(i, j)] = f0[I(i, j)] - tx * (u0[I(i + 1, j)] * f0[I(i + 1, j)] - u0[I(i - 1, j)] * f0[I(i - 1, j)]) - ty * (v0[I(i, j + 1)] * f0[I(i, j + 1)] - v0[I(i, j - 1)] * f0[I(i, j - 1)]);
+      }
+    }
+
+    this.applyBoundary(this.u1x, this.u1y);
+
+    for (i = 1; i < nx1; i++) {
+      for (j = 1; j < ny1; j++) {
+          f0[I(i, j)] = 0.5 * (f0[I(i, j)] + f[I(i, j)]) - 0.5 * tx * u0[I(i, j)] * (f[I(i + 1, j)] - f[I(i - 1, j)]) - 0.5 * ty * v0[I(i, j)] * (f[I(i, j + 1)] - f[I(i, j - 1)]);
+      }
+    }
+
+    this.copy(f, f0);
+
+    this.applyBoundary(this.u1x, this.u1y);
+  }
+
   simulate () {
 
     // b: direction
@@ -125,11 +153,12 @@ class XieFluids extends SimulationBase {
     if (this.viscosity > 0) { // viscid
       this.diffuse(this.u1x, this.u0x);
       this.diffuse(this.u1y, this.u0y);
-
       this.conserve(this.u0x, this.u0y, this.u1x, this.u1y);
     }
 
-    // TODO: advect
+    this.advect(this.u0x, this.u1x);
+    this.advect(this.u0y, this.u1y);
+    this.conserve(this.u0x, this.u0y, this.u1x, this.u1y);
 
   }
 

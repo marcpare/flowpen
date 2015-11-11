@@ -98,6 +98,8 @@ class SimulationBase {
       for(i=0; i < this.N; i++) {
         this.u0x[i] = (Math.random()-0.5)*10.0;
         this.u0y[i] = (Math.random()-0.5)*10.0;
+        this.u1x[i] = this.u0x[i];
+        this.u1y[i] = this.u1y[i];
       }
     }
 
@@ -121,6 +123,7 @@ class SimulationBase {
     console.assert(this.relaxationSteps);
     console.assert(this.viscosity);
     console.assert(this.idxsq);
+    console.assert(this.deltaX);
 
     this.safeMode = config.safeMode;
 
