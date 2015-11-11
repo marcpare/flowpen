@@ -160,6 +160,18 @@ class XieFluids extends SimulationBase {
     this.advect(this.u0y, this.u1y);
     this.conserve(this.u0x, this.u0y, this.u1x, this.u1y);
 
+    for (let i = 20; i < 40; i++) {
+      for (let j = 40; j < 60; j++) {
+        this.u0x[this.I(i, j)] = 10.0;
+      }
+    }
+
+    for (let i = 80; i < 100; i++) {
+      for (let j = 10; j < 40; j++) {
+        this.u0y[this.I(i, j)] = 14.0;
+      }
+    }
+
   }
 
 }

@@ -19,7 +19,7 @@ module.exports = {
     cellSide: 10 / 128,
 
     // Fill the pen with random velocities
-    randomStart: true,
+    randomStart: false,
 
     // The indexer will check if the provided coordinates are in bounds.
     // Meant for debugging, since it will slow down the simulation.
